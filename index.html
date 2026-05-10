@@ -15,11 +15,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 input,select{font-family:inherit}
 
 /* ANNOUNCE */
-.announce{position:fixed;top:0;left:0;right:0;z-index:600;height:36px;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;gap:.8rem}
-.announce .code{background:#c0392b;padding:2px 8px;font-size:10px;font-weight:700}
 
 /* NAV */
-nav{position:fixed;top:36px;left:0;right:0;z-index:500;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e0e0e0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e0e0e0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
 .nav-left{display:flex;gap:2rem;align-items:center}
 .nav-left a{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
 .nav-left a:hover{color:#c0392b}
@@ -546,9 +544,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 </head>
 <body>
 
-<div class="announce">
-  🚚 Envío GRATIS sobre $79.990 &nbsp;·&nbsp; Código <span class="code">PC10</span> — 10% OFF
-</div>
+
 
 <nav>
   <div class="nav-left">
@@ -847,8 +843,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
       <h2 class="chk-title">Método de envío</h2>
       <div style="margin-bottom:2rem">
         <div class="ship-opts">
-          <div class="ship-opt sel" onclick="selShip(this,0)"><div class="rdot"></div><div class="ship-info"><div class="ship-name">Retiro en Tienda</div><div class="ship-time">Disponible hoy · Santiago</div></div><span class="ship-price">GRATIS</span></div>
-          <div class="ship-opt" onclick="selShip(this,5990)"><div class="rdot"></div><div class="ship-info"><div class="ship-name">STARKEN</div><div class="ship-time">3-5 días hábiles · Todo Chile</div></div><span class="ship-price">$5.990</span></div>
+          <div class="ship-opt sel" onclick="selShip(this,5990)"><div class="rdot"></div><div class="ship-info"><div class="ship-name">STARKEN</div><div class="ship-time">3-5 días hábiles · Todo Chile</div></div><span class="ship-price">$5.990</span></div>
           <div class="ship-opt" onclick="selShip(this,7990)"><div class="rdot"></div><div class="ship-info"><div class="ship-name">Envío Express</div><div class="ship-time">1-2 días · RM y cercanas</div></div><span class="ship-price">$7.990</span></div>
         </div>
       </div>
@@ -856,32 +851,22 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
       <p style="font-size:12px;color:#888;margin-bottom:1rem">Transacciones seguras y encriptadas.</p>
       <div style="margin-bottom:2rem">
         <div class="pay-methods">
-          <div class="pay-method sel" onclick="selPay(this,'mp')">
-            <div class="pay-method-head"><div class="rdot"></div><span style="font-size:13px;font-weight:600;flex:1">Mercado Pago</span><div class="pay-icons"><span class="pay-ic" style="background:#00b1ea;color:#fff;border-color:#00b1ea">MP</span><span class="pay-ic">VISA</span><span class="pay-ic">MC</span></div></div>
-            <div class="pay-body"><div class="mp-info">Serás redirigido a MercadoPago para completar la compra de forma segura.</div></div>
-          </div>
-          <div class="pay-method" onclick="selPay(this,'card')">
-            <div class="pay-method-head"><div class="rdot"></div><span style="font-size:13px;font-weight:600;flex:1">Tarjeta Débito / Crédito</span><div class="pay-icons"><span class="pay-ic">VISA</span><span class="pay-ic">MC</span></div></div>
-            <div class="pay-body">
-              <div class="form-group" style="margin-top:10px"><input class="form-input" type="text" placeholder="Número de tarjeta"/></div>
-              <div class="form-row"><div class="form-group"><input class="form-input" type="text" placeholder="MM/AA"/></div><div class="form-group"><input class="form-input" type="text" placeholder="CVV"/></div></div>
-              <div class="form-group"><input class="form-input" type="text" placeholder="Nombre en la tarjeta"/></div>
-            </div>
-          </div>
-          <div class="pay-method" onclick="selPay(this,'transfer')">
-            <div class="pay-method-head"><div class="rdot"></div><span style="font-size:13px;font-weight:600;flex:1">Transferencia Bancaria</span></div>
+          <div class="pay-method sel" onclick="selPay(this,'transfer')">
+            <div class="pay-method-head"><div class="rdot"></div><span style="font-size:13px;font-weight:600;flex:1">Transferencia Bancaria</span><div class="pay-icons"><span class="pay-ic" style="background:#0a0a0a;color:#fff;border-color:#0a0a0a">RUT</span><span class="pay-ic">BANCO</span></div></div>
             <div class="pay-body">
               <div class="transfer-info">
+                <div class="bank-row" style="justify-content:center;padding:12px 0 8px;border-bottom:2px solid #0a0a0a;margin-bottom:10px"><span style="font-size:24px;font-weight:700;letter-spacing:.03em;font-family:'Bebas Neue',sans-serif" id="transferTotal">$0</span><span style="font-size:13px;font-weight:600;margin-left:6px;color:#555">CLP</span></div>
                 <div class="bank-row"><span class="bank-label">Banco</span><span class="bank-value">BancoEstado</span></div>
                 <div class="bank-row"><span class="bank-label">Tipo</span><span class="bank-value">CuentaRUT</span></div>
-                <div class="bank-row"><span class="bank-label">RUT</span><span class="bank-value" id="bankRut">XX.XXX.XXX-X</span><button class="copy-btn" onclick="copyT(document.getElementById('bankRut').textContent,'cp1')" id="cp1">COPIAR</button></div>
-                <div class="bank-row"><span class="bank-label">N° Cuenta</span><span class="bank-value" id="bankCta">XXXXXXXXXXX</span><button class="copy-btn" onclick="copyT(document.getElementById('bankCta').textContent,'cp2')" id="cp2">COPIAR</button></div>
-                <div class="bank-row"><span class="bank-label">Nombre</span><span class="bank-value">PRIMECLUB</span></div>
+                <div class="bank-row"><span class="bank-label">RUT</span><span class="bank-value" id="bankRut">22.302.547-1</span><button class="copy-btn" onclick="copyT(document.getElementById('bankRut').textContent,'cp1')" id="cp1">COPIAR</button></div>
+                <div class="bank-row"><span class="bank-label">N° Cuenta</span><span class="bank-value" id="bankCta">22302547</span><button class="copy-btn" onclick="copyT(document.getElementById('bankCta').textContent,'cp2')" id="cp2">COPIAR</button></div>
+                <div class="bank-row"><span class="bank-label">Nombre</span><span class="bank-value">Tomás Alejandro Ramos Araya</span></div>
                 <button class="copy-all" id="btnCopyAll" onclick="copyAll()">📋 Copiar todos los datos</button>
-                <div style="margin-top:12px"><a href="https://wa.me/56948606724" target="_blank" style="display:inline-block;background:#0a0a0a;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px">ENVIAR COMPROBANTE →</a></div>
+                <div style="margin-top:16px"><a href="https://wa.me/56994195064?text=Hola%20PRIMECLUB!%20Adjunto%20mi%20comprobante%20de%20pago%20%F0%9F%A7%BE" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:13px 20px;text-decoration:none">📲 ENVIAR COMPROBANTE POR WHATSAPP</a></div>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       <h2 class="chk-title">Dirección de facturación</h2>
@@ -959,7 +944,7 @@ const essentialsProds = [
    sizes:['L','XL'],unavail:[]}
 ]
 const allProds = [...essentialsProds];
-let cart=[],shipCost=0,discPct=0,curProd=null,ppSize=null,ppQty=1,payMethod='mp';
+let cart=[],shipCost=5990,discPct=0,curProd=null,ppSize=null,ppQty=1,payMethod='transfer';
 const fmt = n => '$'+n.toLocaleString('es-CL');
 function notify(m){const n=document.getElementById('notif');n.textContent=m;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2800);}
 
@@ -1122,6 +1107,7 @@ function renderSum(){
   if(disc>0){document.getElementById('sumDiscRow').style.display='flex';document.getElementById('sumDiscAmt').textContent='-'+fmt(disc);}
   document.getElementById('sumShip').textContent=shipCost===0?'GRATIS':fmt(shipCost);
   document.getElementById('sumTotal').textContent=fmt(total);
+  const tt=document.getElementById('transferTotal');if(tt)tt.textContent=fmt(total);
 }
 function submitOrder(){
   const contact=document.getElementById('chkContact').value;if(!contact){notify('Ingresa tu email o teléfono');return;}
@@ -1181,15 +1167,7 @@ const infoPages = {
     eyebrow: 'PRIMECLUB',
     title: 'ENVÍOS',
     html: `
-      <div class="envio-card">
-        <div class="envio-icon">🏪</div>
-        <div>
-          <h4>Retiro en Tienda</h4>
-          <p>Disponible en Santiago. Coordinamos punto de entrega por WhatsApp una vez confirmado el pago.</p>
-          <div class="envio-price">GRATIS</div>
-        </div>
-      </div>
-      <div class="envio-card">
+<div class="envio-card">
         <div class="envio-icon">📦</div>
         <div>
           <h4>STARKEN — Todo Chile</h4>
@@ -1234,7 +1212,7 @@ const infoPages = {
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">¿Cuánto demora en llegar mi pedido? <span class="faq-icon">+</span></div>
-        <div class="faq-answer">Retiro en Santiago: mismo día o al siguiente hábil. STARKEN: 3 a 5 días hábiles. Express RM: 1 a 2 días hábiles. Los tiempos corren desde la confirmación del pago.</div>
+        <div class="faq-answer">STARKEN: 3 a 5 días hábiles. Express Santiago: 1 día hábil. Express RM: 1 a 2 días hábiles. Los tiempos corren desde la confirmación del pago.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">¿Cómo puedo pagar? <span class="faq-icon">+</span></div>
