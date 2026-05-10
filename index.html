@@ -1111,21 +1111,36 @@ function renderSum(){
   const tt=document.getElementById('transferTotal');if(tt)tt.textContent=fmt(total);
 }
 function submitOrder(){
-  const contact=document.getElementById('chkContact').value;if(!contact){notify('Ingresa tu email o teléfono');return;}
+  const contact=document.getElementById('chkContact').value;
+  if(!contact){notify('Ingresa tu email o teléfono');return;}
   if(cart.length===0){notify('Carrito vacío');return;}
-  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);const disc=Math.round(sub*discPct);const total=sub-disc+shipCost;
-  const num='PC-'+String(Math.floor(Math.random()*9000)+1000);
-  document.getElementById('orderNum').textContent=num;document.getElementById('successAmt').textContent=fmt(total)+' CLP';
   const nombre=document.getElementById('chkNombre').value||'cliente';
-  document.getElementById('successDesc').textContent='¡Hola '+nombre+'! Tu pedido #'+num+' fue recibido.'+(payMethod==='transfer'?' Realiza la transferencia y envíanos el comprobante por WhatsApp.':payMethod==='mp'?' Serás redirigido a MercadoPago.':' Tu pago está siendo procesado.');
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const disc=Math.round(sub*discPct);
+  const total=sub-disc+shipCost;
+  const num='PC-'+String(Math.floor(Math.random()*9000)+1000);
+
+  // Snapshot antes de limpiar carrito
+  const snap=cart.map(i=>({name:i.name,size:i.size,qty:i.qty,price:i.price}));
+
+  // Mostrar pagina exito
+  document.getElementById('orderNum').textContent=num;
+  document.getElementById('successAmt').textContent=fmt(total)+' CLP';
+  document.getElementById('successDesc').textContent='¡Hola '+nombre+'! Tu pedido #'+num+' fue recibido. Realiza la transferencia y envíanos el comprobante por WhatsApp.';
   document.getElementById('successBank').style.display='block';
-  const cartSnap=[...cart.map(i=>({...i}))];const totalSnap=total;
-  document.getElementById('checkoutPage').classList.remove('active');document.getElementById('successPage').classList.add('active');
-  // Generar link WA con detalle del pedido
-  const itemsText=cartSnap.map(i=>`• ${i.name} T.${i.size} x${i.qty} — ${fmt(i.price*i.qty)}`).join('\n');
-  const waMsg=`🛍️ *Nuevo Pedido PRIMECLUB*\n\nOrden: #${num}\nCliente: ${nombre}\nContacto: ${contact}\n\n*Productos:*\n${itemsText}\n\n*Total a transferir: ${fmt(totalSnap)} CLP*\n\nAdjunto comprobante 🧾`;
-  const waBtn=document.getElementById('waComprobanteBtn');
-  if(waBtn) waBtn.href='https://wa.me/56994195064?text='+encodeURIComponent(waMsg);
+  document.getElementById('checkoutPage').classList.remove('active');
+  document.getElementById('successPage').classList.add('active');
+
+  // Construir mensaje WhatsApp con detalle del pedido
+  var lineas=snap.map(function(i){return '- '+i.name+' | Talla: '+i.size+' | Cant: '+i.qty+' | '+fmt(i.price*i.qty)+' CLP';}).join('\n');
+  var msg='*Nuevo Pedido PRIMECLUB* \n\nOrden: '+num+'\nNombre: '+nombre+'\nContacto: '+contact+'\n\nPrendas:\n'+lineas+'\n\nTotal: '+fmt(total)+' CLP\n\nAdjunto comprobante de transferencia';
+  var waUrl='https://wa.me/56994195064?text='+encodeURIComponent(msg);
+
+  // Actualizar boton y abrir WA automaticamente
+  var btn=document.getElementById('waComprobanteBtn');
+  if(btn) btn.href=waUrl;
+  setTimeout(function(){ window.open(waUrl,'_blank'); },800);
+
   cart=[];discPct=0;updCart();window.scrollTo(0,0);
 }
 function showHome(){
