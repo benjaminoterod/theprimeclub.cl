@@ -25,7 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 .nav-left a:hover{color:#c0392b}
 .nav-logo{position:absolute;left:50%;transform:translateX(-50%);cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.12em;white-space:nowrap}
 .nav-right{display:flex;gap:1.2rem;align-items:center}
-.nav-icon{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1a1a1a;transition:color .2s;position:relative;padding:4px}
+.nav-icon{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1a1a1a;transition:color .2s;position:relative;padding:8px;min-width:40px;min-height:40px}
 .nav-icon:hover{color:#c0392b}
 .cart-badge{position:absolute;top:-3px;right:-3px;background:#c0392b;color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
@@ -51,7 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 .brand-section{background:#0a0a0a;padding:5rem 2.5rem;text-align:center}
 .brand-section-tag{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;display:block}
 .brand-section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,110px);letter-spacing:.06em;color:#fff;line-height:.9;margin-bottom:1.5rem}
-.brand-section-text{font-size:15px;color:rgba(255,255,255,.45);line-height:1.9;max-width:520px;margin:0 auto 2.5rem;font-weight:400;letter-spacing:.02em}
+.brand-section-text{font-size:15px;color:rgba(255,255,255,.58);line-height:1.9;max-width:520px;margin:0 auto 2.5rem;font-weight:400;letter-spacing:.02em}
 .brand-section-divider{width:40px;height:2px;background:#c0392b;margin:0 auto}
 
 /* CATEGORY SECTION */
@@ -737,15 +737,14 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 
 
 <!-- WOMANLINE -->
-<div style="padding:3rem 1rem 1rem;background:#fafafa">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.2rem;max-width:1200px;margin-left:auto;margin-right:auto">
-    <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;color:#888;text-transform:uppercase;margin-bottom:4px">Nueva Línea</div>
-      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,42px);letter-spacing:.06em;margin:0">WOMANLINE</h2>
+<div class="catalog-entry reveal" style="background:#fff">
+  <div class="catalog-entry-inner">
+    <div class="catalog-entry-head">
+      <h2>WOMANLINE</h2>
+      <a onclick="openCatalog('womanline')">Ver todas →</a>
     </div>
-    <a onclick="openCatalog('womanline')" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-bottom:1.5px solid #0a0a0a;padding-bottom:2px;text-decoration:none;color:#0a0a0a">Ver todas →</a>
+    <div class="catalog-preview-grid" id="womanline-grid"></div>
   </div>
-  <div id="womanline-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;max-width:1200px;margin:0 auto"></div>
 </div>
 <!-- FOOTER -->
 <footer>
@@ -1439,7 +1438,7 @@ function fillPreviewGrid(cat, gridId) {
 // INIT
 fillPreviewGrid('poleron','previewPolerones');
 fillPreviewGrid('polera','previewPoleras');
-fillGrid(essentialsProds.filter(function(p){return p.cat==='womanline'}),'womanline-grid');
+fillPreviewGrid('womanline','womanline-grid');
 
 updCart();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeCart();}});
