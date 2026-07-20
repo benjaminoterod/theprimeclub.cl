@@ -3,7 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PRIMECLUB — Streetwear</title>
+<title>PRIMECLUB — Streetwear Premium Chile</title>
+<meta name="description" content="PRIMECLUB — Streetwear premium 100% original en Chile. Polerones, poleras y WOMANLINE. Envíos a todo Chile, pago por transferencia."/>
+<link rel="canonical" href="https://theprimeclub.cl/"/>
+<meta name="theme-color" content="#0a0a0a"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='58' font-weight='900' fill='%23fff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="PRIMECLUB"/>
+<meta property="og:title" content="PRIMECLUB — Streetwear Premium Chile"/>
+<meta property="og:description" content="Streetwear premium 100% original en Chile. Polerones, poleras y WOMANLINE. Envíos a todo Chile."/>
+<meta property="og:url" content="https://theprimeclub.cl/"/>
+<meta property="og:locale" content="es_CL"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="PRIMECLUB — Streetwear Premium Chile"/>
+<meta name="twitter:description" content="Streetwear premium 100% original en Chile. Envíos a todo Chile."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -285,6 +300,8 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 .search-box{max-width:740px;margin:0 auto;height:100%;display:flex;flex-direction:column;padding:3rem 2rem}
 .search-bar{display:flex;align-items:center;border-bottom:2px solid rgba(255,255,255,.14);padding-bottom:.8rem;margin-bottom:2rem;gap:1rem}
 .search-bar input{flex:1;background:none;border:none;outline:none;font-size:22px;color:#fff;font-family:'DM Sans',sans-serif}
+.search-bar input:focus-visible{outline:1.5px solid rgba(255,255,255,.5);outline-offset:4px}
+.product-card:focus-visible,.catalog-preview-card:focus-visible,.src-card:focus-visible{outline:2px solid #0a0a0a;outline-offset:2px}
 .search-bar input::placeholder{color:rgba(255,255,255,.18)}
 .search-close{font-size:24px;color:rgba(255,255,255,.35);line-height:1}
 .search-close:hover{color:#fff}
@@ -566,6 +583,19 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 .products-grid .product-card:nth-child(4) { animation-delay:.24s; }
 .catalog-preview-grid .catalog-preview-card:nth-child(2) { animation-delay:.08s; }
 .catalog-preview-grid .catalog-preview-card:nth-child(3) { animation-delay:.16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -666,7 +696,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
   <div class="search-box">
     <div class="search-bar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Buscar productos..." id="searchInput" oninput="doSearch(this.value)"/>
+      <input type="text" placeholder="Buscar productos..." id="searchInput" aria-label="Buscar productos" oninput="doSearch(this.value)"/>
       <button class="search-close" onclick="closeSearch()">✕</button>
     </div>
     <div class="search-results" id="searchResults"></div>
@@ -674,7 +704,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 </div>
 
 <!-- HOMEPAGE -->
-<div id="homepage">
+<main id="homepage">
 
 <!-- 1. HERO -->
 <section class="hero">
@@ -760,7 +790,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
     <div style="color:#555;font-size:10px;letter-spacing:.08em">© 2025 PRIMECLUB — 100% AUTÉNTICAS. Envíos a todo Chile.</div>
   </div>
 </footer>
-</div><!-- end homepage -->
+</main><!-- end homepage -->
 
 <!-- PRODUCT PAGE -->
 <div id="productPage">
@@ -816,7 +846,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
   </div>
   <div class="cart-footer" id="cartFooter" style="display:none">
     <div class="disc-row">
-      <input class="disc-inp" type="text" placeholder="Código de descuento" id="cartDiscInp"/>
+      <input class="disc-inp" type="text" placeholder="Código de descuento" id="cartDiscInp" aria-label="Código de descuento"/>
       <button class="disc-apply" onclick="applyDisc('cart')">Aplicar</button>
     </div>
     <div class="disc-ok" id="cartDiscOk">✓ Descuento aplicado</div>
@@ -837,18 +867,18 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
     <div class="chk-left">
       <button class="chk-back" onclick="backCart()">← Volver al carrito</button>
       <h1 class="chk-title">Contacto</h1>
-      <div style="margin-bottom:2rem"><input class="form-input" type="text" placeholder="Email o teléfono" id="chkContact" style="width:100%;margin-bottom:10px"/></div>
+      <div style="margin-bottom:2rem"><input class="form-input" type="text" placeholder="Email o teléfono" id="chkContact" aria-label="Email o teléfono" required style="width:100%;margin-bottom:10px"/></div>
       <h2 class="chk-title">Entrega</h2>
       <div style="margin-bottom:2rem">
         <div class="form-row">
-          <div class="form-group"><input class="form-input" type="text" id="chkNombre" placeholder="Nombre"/></div>
-          <div class="form-group"><input class="form-input" type="text" id="chkApellidos" placeholder="Apellidos"/></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkNombre" placeholder="Nombre" aria-label="Nombre"/></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkApellidos" placeholder="Apellidos" aria-label="Apellidos"/></div>
         </div>
-        <div class="form-group" style="margin-top:0"><input class="form-input" type="text" id="chkDireccion" placeholder="Dirección" style="width:100%"/></div>
-        <div class="form-group" style="margin-top:10px"><input class="form-input" type="text" id="chkDpto" placeholder="Dpto., casa (opcional)" style="width:100%"/></div>
+        <div class="form-group" style="margin-top:0"><input class="form-input" type="text" id="chkDireccion" placeholder="Dirección" aria-label="Dirección" style="width:100%"/></div>
+        <div class="form-group" style="margin-top:10px"><input class="form-input" type="text" id="chkDpto" placeholder="Dpto., casa (opcional)" aria-label="Departamento o casa (opcional)" style="width:100%"/></div>
         <div class="form-row" style="margin-top:10px">
-          <div class="form-group"><input class="form-input" type="text" placeholder="Código postal (opc.)"/></div>
-          <div class="form-group"><input class="form-input" type="text" id="chkCiudad" placeholder="Ciudad"/></div>
+          <div class="form-group"><input class="form-input" type="text" placeholder="Código postal (opc.)" aria-label="Código postal (opcional)"/></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkCiudad" placeholder="Ciudad" aria-label="Ciudad"/></div>
         </div>
         <div style="margin-top:10px"><select class="form-select" style="width:100%">
           <option>La Serena</option><option>Coquimbo</option><option>Región Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Biobío</option><option>La Araucanía</option><option>Los Lagos</option><option>Antofagasta</option><option>Atacama</option><option>Tarapacá</option><option>Arica y Parinacota</option><option>Los Ríos</option><option>Aysén</option><option>Magallanes</option>
@@ -890,7 +920,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
     <div class="chk-right">
       <div class="sum-items" id="sumItems"></div>
       <div class="sum-disc-row">
-        <input class="sum-disc-inp" type="text" placeholder="Código de descuento" id="chkDiscInp"/>
+        <input class="sum-disc-inp" type="text" placeholder="Código de descuento" id="chkDiscInp" aria-label="Código de descuento"/>
         <button class="sum-disc-btn" onclick="applyDisc('chk')">Aplicar</button>
       </div>
       <div class="sum-rows">
@@ -992,7 +1022,7 @@ function pCard(p){
   const priceRow=so
     ?'<div style="color:#c0392b;font-size:11px;font-weight:800;letter-spacing:.16em;margin-top:4px;text-transform:uppercase">Agotado</div>'
     :'<div><span class="product-price">'+fmt(p.price)+' CLP</span>'+oldP+'</div>';
-  return '<div class="product-card" onclick="openProd('+p.id+')">'
+  return '<div class="product-card" onclick="openProd('+p.id+')" role="button" tabindex="0" aria-label="Ver '+p.name+'" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openProd('+p.id+')}">'
     +'<div class="product-img">'
       +'<div class="product-flip">'
         +'<div class="product-flip-face pf-front">'+front+'</div>'
@@ -1188,7 +1218,7 @@ function closeSearch(){document.getElementById('searchOverlay').classList.remove
 function doSearch(q){
   const res=document.getElementById('searchResults');
   const list=q.length<2?allProds.slice(0,8):allProds.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())||p.brand.toLowerCase().includes(q.toLowerCase()));
-  res.innerHTML=list.slice(0,8).map(p=>`<div class="src-card" onclick="closeSearch();openProd(${p.id})"><div class="src-img">${p.imgs&&p.imgs[0]?`<img src="${p.imgs[0]}" alt="${p.name}">`:p.emoji}</div><div class="src-name">${p.name}</div><div class="src-price">${fmt(p.price)} CLP</div></div>`).join('');
+  res.innerHTML=list.slice(0,8).map(p=>`<div class="src-card" onclick="closeSearch();openProd(${p.id})" role="button" tabindex="0" aria-label="Ver ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeSearch();openProd(${p.id})}"><div class="src-img">${p.imgs&&p.imgs[0]?`<img src="${p.imgs[0]}" alt="${p.name}">`:p.emoji}</div><div class="src-name">${p.name}</div><div class="src-price">${fmt(p.price)} CLP</div></div>`).join('');
 }
 function copyAll(){
   const total=document.getElementById('sumTotal')?document.getElementById('sumTotal').textContent:'';
@@ -1415,7 +1445,7 @@ function pCardPreview(p) {
   const img1 = p.imgs && p.imgs.length > 1 ? p.imgs[1] : img0;
   const front = img0 ? `<img src="${img0}" alt="${p.name}" loading="lazy"/>` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:50px;opacity:.18">${p.emoji}</div>`;
   const back  = img1 ? `<img src="${img1}" alt="${p.name}" loading="lazy"/>` : front;
-  return `<div class="catalog-preview-card" onclick="openProd(${p.id})">
+  return `<div class="catalog-preview-card" onclick="openProd(${p.id})" role="button" tabindex="0" aria-label="Ver ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProd(${p.id})}">
     <div class="catalog-preview-img" style="perspective:1000px;overflow:hidden">
       <div class="product-flip" style="width:100%;height:100%">
         <div class="product-flip-face pf-front">${front}</div>
