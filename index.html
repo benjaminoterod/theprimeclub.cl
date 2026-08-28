@@ -48,7 +48,8 @@
     {"@type":"Product","position":6,"name":"Coffe Drop One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":7,"name":"Womanline Beige","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":8,"name":"Womanline Café","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":9,"name":"Womanline Negra","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}}
+    {"@type":"Product","position":9,"name":"Womanline Negra","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":10,"name":"Jockey Negro","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"JOCKEYS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"10990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}}
   ]
 }
 </script>
@@ -1005,7 +1006,7 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 
 
 <script>
-const CODES = {'PC10':.10,'PRIME15':.15,'DROP20':.20};
+const CODES = {};
 
 const essentialsProds = [
   // ── POLERONES ──
@@ -1643,6 +1644,28 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();close
       el.classList.add('visible');
     });
   }, 1200);
+})();
+
+// ── A11Y: keep hidden "pages" out of the accessibility tree ──
+// Multiple <h1>/<h2> live in the DOM at once (one per page). Since every
+// page toggles via display:none, syncing aria-hidden to match keeps
+// screen-reader heading navigation to only the page actually on screen.
+(function(){
+  var pageIds = ['homepage','productPage','checkoutPage','successPage','infoPage','catalogPage'];
+  function syncPageAria(){
+    pageIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      if(getComputedStyle(el).display === 'none') el.setAttribute('aria-hidden','true');
+      else el.removeAttribute('aria-hidden');
+    });
+  }
+  var observer = new MutationObserver(syncPageAria);
+  pageIds.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) observer.observe(el, {attributes:true, attributeFilter:['class','style']});
+  });
+  syncPageAria();
 })();
 
 </script>
