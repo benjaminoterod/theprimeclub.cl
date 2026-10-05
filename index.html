@@ -146,7 +146,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 /* PRODUCT PAGE */
 #productPage{display:none;min-height:100vh;padding-top:58px;background:#fff}
 #productPage.active{display:block}
-.product-page-inner{display:grid;grid-template-columns:1fr 490px;min-height:calc(100vh - 94px)}
+.product-page-inner{display:grid;grid-template-columns:1fr 490px;min-height:calc(100vh - 58px)}
 .pp-gallery{background:#f5f5f5;display:flex;flex-direction:column}
 .gallery-main{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:500px;cursor:zoom-in;position:relative;background:#f5f5f5}
 .gallery-main:focus-visible{outline:2px solid #0a0a0a;outline-offset:-2px}
@@ -159,7 +159,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 .gal-thumb img{width:100%;height:100%;object-fit:cover}
 .gal-thumb.active{border-color:#0a0a0a}
 .gal-thumb:focus-visible{outline:2px solid #0a0a0a;outline-offset:2px}
-.pp-detail{padding:2.5rem;border-left:1px solid #e0e0e0;overflow-y:auto;position:sticky;top:94px;height:calc(100vh - 94px)}
+.pp-detail{padding:2.5rem;border-left:1px solid #e0e0e0;overflow-y:auto;position:sticky;top:58px;height:calc(100vh - 58px)}
 .pp-back{font-size:11px;color:#595959;display:flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;transition:color .2s;font-weight:700}
 .pp-back:hover{color:#1a1a1a}
 .pp-brand-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#595959;margin-bottom:.5rem}
@@ -236,7 +236,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 #checkoutPage.active{display:block}
 .chk-inner{display:grid;grid-template-columns:1fr 420px;max-width:1100px;margin:0 auto}
 .chk-left{padding:3rem 3rem 3rem 2.5rem;background:#fff}
-.chk-right{padding:2.5rem 2rem;background:#f5f5f5;border-left:1px solid #e0e0e0;position:sticky;top:94px;height:calc(100vh - 94px);overflow-y:auto}
+.chk-right{padding:2.5rem 2rem;background:#f5f5f5;border-left:1px solid #e0e0e0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto}
 .chk-back{font-size:11px;color:#595959;display:flex;align-items:center;gap:.4rem;margin-bottom:2rem;font-weight:700}
 .chk-back:hover{color:#1a1a1a}
 .chk-title{font-size:18px;font-weight:700;margin-bottom:1.5rem}
@@ -588,11 +588,6 @@ footer{background:#0a0a0a;padding:4rem 2.5rem 2rem}
 
 
 
-}
-
-
-
-
 
 
 /* Stagger children inside reveal-stagger */
@@ -733,6 +728,36 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
   .pp-detail .add-btn{position:sticky;bottom:0;z-index:30;box-shadow:0 -10px 18px rgba(255,255,255,.96)}
   .pp-back{min-height:44px}
 }
+
+/* ===== AUDITORÍA: entrada / accesibilidad ===== */
+html{background:#0a0a0a}
+@supports(height:100svh){
+  .hero{height:calc(100svh - 58px)}
+  #successPage,#catalogPage,#productPage{min-height:100svh}
+}
+.hero-link{color:#fff;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;min-height:44px;padding:0 4px;border-bottom:1px solid rgba(255,255,255,.6);align-self:flex-end;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero-link:hover{border-bottom-color:#fff}
+.hero-link:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.ht-tag-row span{color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.65)}
+/* cajones cerrados fuera del orden de tabulación y del árbol de accesibilidad */
+.cart-drawer{visibility:hidden;transition:transform .38s cubic-bezier(.25,.46,.45,.94),visibility 0s linear .38s}
+.cart-drawer.open{visibility:visible;transition:transform .38s cubic-bezier(.25,.46,.45,.94),visibility 0s linear 0s}
+.side-menu{visibility:hidden;transition:transform .4s cubic-bezier(.25,.46,.45,.94),visibility 0s linear .4s}
+.side-menu.open{visibility:visible;transition:transform .4s cubic-bezier(.25,.46,.45,.94),visibility 0s linear 0s}
+.src-card:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.side-menu-close{min-width:44px;min-height:44px}
+/* objetivos táctiles */
+.ci-remove{min-height:32px;padding:6px 4px}
+.ciq-btn{width:32px;height:32px}
+.catalog-entry-head a{padding:12px 0 2px;display:inline-block}
+.chk-back,.catalog-page-back{min-height:44px}
+footer a{display:inline-block;padding:12px 6px}
+/* bordes de controles con contraste suficiente (WCAG 1.4.11) */
+.form-input,.form-select,.size-opt,.qty-ctrl,.sum-disc-inp{border-color:#949494}
+/* 16px evita el zoom automático de iOS al enfocar */
+@media(max-width:600px){.form-input,.form-select,.sum-disc-inp,.disc-inp,#searchInput{font-size:16px}}
+/* en táctil no hay hover: el botón flotante quedaba pegado */
+@media(hover:none){.hover-add{display:none}}
 </style>
 </head>
 <body>
@@ -756,9 +781,9 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
 
 
 
-<nav>
+<nav aria-label="Principal">
   <div class="nav-left">
-    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menú">
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menú" aria-expanded="false" aria-controls="sideMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -783,7 +808,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
 <div class="side-menu" id="sideMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
   <div class="side-menu-top">
     <span class="side-menu-logo">PRIMECLUB</span>
-    <button class="side-menu-close" onclick="closeMenu()">✕</button>
+    <button class="side-menu-close" onclick="closeMenu()" aria-label="Cerrar menú">✕</button>
   </div>
   <div class="side-menu-body">
 
@@ -855,7 +880,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
     <div class="search-bar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" placeholder="Buscar productos..." id="searchInput" aria-label="Buscar productos" oninput="doSearch(this.value)"/>
-      <button class="search-close" onclick="closeSearch()">✕</button>
+      <button class="search-close" onclick="closeSearch()" aria-label="Cerrar búsqueda">✕</button>
     </div>
     <div class="search-results" id="searchResults"></div>
   </div>
@@ -878,6 +903,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
     <div class="hero-center"></div>
     <!-- BOTTOM: título + botón a la izquierda, scroll a la derecha -->
     <div class="hero-bottom">
+      <button type="button" class="hero-link" onclick="var c=document.querySelector('.catalog-entry');if(c)c.scrollIntoView({behavior:'smooth',block:'start'})">Ver colección</button>
       <div class="hero-scroll">
         <span>Scroll</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1011,9 +1037,9 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <div class="qty-row">
         <span class="pp-label" style="margin-bottom:0">Cantidad</span>
         <div class="qty-ctrl">
-          <button class="qty-btn" onclick="chgQty(-1)">−</button>
+          <button class="qty-btn" onclick="chgQty(-1)" aria-label="Disminuir cantidad">−</button>
           <div class="qty-num" id="qtyNum">1</div>
-          <button class="qty-btn" onclick="chgQty(1)">+</button>
+          <button class="qty-btn" onclick="chgQty(1)" aria-label="Aumentar cantidad">+</button>
         </div>
       </div>
       <button class="add-btn" id="ppAddBtn" onclick="ppAdd()">
@@ -1036,7 +1062,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
 <div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
   <div class="cart-header">
     <h2>CARRITO <span style="font-size:12px;font-weight:500;color:#595959" id="cartCountLbl"></span></h2>
-    <button class="cart-close" onclick="closeCart()">✕</button>
+    <button class="cart-close" onclick="closeCart()" aria-label="Cerrar carrito">✕</button>
   </div>
   <div class="cart-body" id="cartBody">
     <div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-txt">Tu carrito está vacío</div></div>
@@ -1065,23 +1091,23 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <button class="chk-back" onclick="backCart()">← Volver al carrito</button>
       <h1 class="chk-title">Contacto</h1>
       <div style="margin-bottom:2rem">
-        <input class="form-input" type="text" placeholder="Email o teléfono" id="chkContact" aria-label="Email o teléfono" required style="width:100%"/>
+        <input class="form-input" type="text" placeholder="Email o teléfono" id="chkContact" aria-label="Email o teléfono" autocapitalize="none" spellcheck="false" required style="width:100%"/>
         <div class="field-err" id="errContact">Ingresa tu email o teléfono.</div>
       </div>
       <h2 class="chk-title">Entrega</h2>
       <div style="margin-bottom:2rem">
         <div class="form-row">
-          <div class="form-group"><input class="form-input" type="text" id="chkNombre" placeholder="Nombre" aria-label="Nombre"/><div class="field-err" id="errNombre">Ingresa tu nombre.</div></div>
-          <div class="form-group"><input class="form-input" type="text" id="chkApellidos" placeholder="Apellidos" aria-label="Apellidos"/></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkNombre" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre"/><div class="field-err" id="errNombre">Ingresa tu nombre.</div></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkApellidos" autocomplete="family-name" placeholder="Apellidos" aria-label="Apellidos"/></div>
         </div>
-        <div class="form-group" style="margin-top:0"><input class="form-input" type="text" id="chkDireccion" placeholder="Dirección" aria-label="Dirección" style="width:100%"/><div class="field-err" id="errDireccion">Ingresa tu dirección de envío.</div></div>
-        <div class="form-group" style="margin-top:10px"><input class="form-input" type="text" id="chkDpto" placeholder="Dpto., casa (opcional)" aria-label="Departamento o casa (opcional)" style="width:100%"/></div>
+        <div class="form-group" style="margin-top:0"><input class="form-input" type="text" id="chkDireccion" autocomplete="address-line1" placeholder="Dirección" aria-label="Dirección" style="width:100%"/><div class="field-err" id="errDireccion">Ingresa tu dirección de envío.</div></div>
+        <div class="form-group" style="margin-top:10px"><input class="form-input" type="text" id="chkDpto" autocomplete="address-line2" placeholder="Dpto., casa (opcional)" aria-label="Departamento o casa (opcional)" style="width:100%"/></div>
         <div class="form-row" style="margin-top:10px">
-          <div class="form-group"><input class="form-input" type="text" id="chkCP" placeholder="Código postal (opc.)" aria-label="Código postal (opcional)"/></div>
-          <div class="form-group"><input class="form-input" type="text" id="chkCiudad" placeholder="Ciudad" aria-label="Ciudad"/><div class="field-err" id="errCiudad">Ingresa tu ciudad.</div></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkCP" autocomplete="postal-code" inputmode="numeric" placeholder="Código postal (opc.)" aria-label="Código postal (opcional)"/></div>
+          <div class="form-group"><input class="form-input" type="text" id="chkCiudad" autocomplete="address-level2" placeholder="Ciudad" aria-label="Ciudad"/><div class="field-err" id="errCiudad">Ingresa tu ciudad.</div></div>
         </div>
         <div style="margin-top:10px"><select class="form-select" id="chkRegion" aria-label="Región" style="width:100%">
-          <option>La Serena</option><option>Coquimbo</option><option>Región Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Biobío</option><option>La Araucanía</option><option>Los Lagos</option><option>Antofagasta</option><option>Atacama</option><option>Tarapacá</option><option>Arica y Parinacota</option><option>Los Ríos</option><option>Aysén</option><option>Magallanes</option>
+          <option>La Serena</option><option>Coquimbo</option><option>Región Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Ñuble</option><option>Biobío</option><option>La Araucanía</option><option>Los Lagos</option><option>Antofagasta</option><option>Atacama</option><option>Tarapacá</option><option>Arica y Parinacota</option><option>Los Ríos</option><option>Aysén</option><option>Magallanes</option>
         </select></div>
       </div>
       <h2 class="chk-title">Método de envío</h2>
@@ -1174,6 +1200,20 @@ window.addEventListener('popstate',function(){
   if(on('productPage')){closeProd();return;}
   if(on('infoPage')){closeInfo();return;}
   if(on('catalogPage')){closeCatalog();return;}
+});
+var _bgSel='nav,#homepage,footer,#productPage,#checkoutPage,#successPage,#catalogPage,#infoPage';
+function _inertOn(){document.querySelectorAll(_bgSel).forEach(function(e){e.setAttribute('inert','');});}
+function _inertOff(){document.querySelectorAll(_bgSel).forEach(function(e){e.removeAttribute('inert');});}
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Tab')return;
+  var m=document.querySelector('#cartDrawer.open,#sideMenu.open,#searchOverlay.show');
+  if(!m)return;
+  var f=[].slice.call(m.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])')).filter(function(x){return x.offsetParent!==null;});
+  if(!f.length)return;
+  var first=f[0],last=f[f.length-1],a=document.activeElement;
+  if(!m.contains(a)){e.preventDefault();first.focus();}
+  else if(e.shiftKey&&a===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&a===last){e.preventDefault();first.focus();}
 });
 function markOrderSent(){
   try{var o=JSON.parse(localStorage.getItem('primeclubLastOrder')||'null');if(o){o.sent=true;localStorage.setItem('primeclubLastOrder',JSON.stringify(o));}}catch(e){}
@@ -1279,7 +1319,7 @@ function pCard(p){
     :'<div class="product-img-ph" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div class="ph-icon">'+p.emoji+'</div></div>';
   const oldP=p.oldPrice?'<span class="product-price-old">'+fmt(p.oldPrice)+' CLP</span>':'';
   const hoverAdd=so?'':'<div class="hover-add" onclick="event.stopPropagation();qAdd('+p.id+')">+ Agregar</div>';
-  const nameStyle=so?'style="text-decoration:line-through;opacity:.4"':'';
+  const nameStyle=so?'style="text-decoration:line-through;color:#6b6b6b"':'';
   const priceRow=so
     ?'<div style="color:#c0392b;font-size:11px;font-weight:800;letter-spacing:.16em;margin-top:4px;text-transform:uppercase">Agotado</div>'
     :'<div><span class="product-price">'+fmt(p.price)+' CLP</span>'+oldP+'</div>';
@@ -1399,25 +1439,25 @@ function updCart(){
       <div class="cart-item">
         <div class="ci-img">${i.imgs&&i.imgs[0]?`<img src="${i.imgs[0]}" alt="${i.name}">`:`<span style="font-size:24px">${i.emoji}</span>`}</div>
         <div><div class="ci-name">${i.name}</div><div class="ci-meta">${i.brand} · Talla ${i.size}</div>
-          <div class="ci-qty"><button class="ciq-btn" onclick="updItemQty(${i.id},'${i.size}',-1)">−</button><div class="ciq-n">${i.qty}</div><button class="ciq-btn" onclick="updItemQty(${i.id},'${i.size}',1)">+</button></div>
+          <div class="ci-qty"><button class="ciq-btn" data-q="${i.id}|${i.size}|-1" aria-label="Disminuir cantidad de ${i.name}" onclick="updItemQty(${i.id},'${i.size}',-1)">−</button><div class="ciq-n" aria-live="polite">${i.qty}</div><button class="ciq-btn" data-q="${i.id}|${i.size}|1" aria-label="Aumentar cantidad de ${i.name}" onclick="updItemQty(${i.id},'${i.size}',1)">+</button></div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
           <div class="ci-price">${fmt(i.price*i.qty)} CLP</div>
-          <button class="ci-remove" onclick="rmItem(${i.id},'${i.size}')">✕ Eliminar</button>
+          <button class="ci-remove" aria-label="Eliminar ${i.name} del carrito" onclick="rmItem(${i.id},'${i.size}')">✕ Eliminar</button>
         </div>
       </div>`).join('');
     footer.style.display='block';
   }
 }
-function updItemQty(id,sz,d){const i=cart.find(x=>x.id===id&&x.size===sz);if(!i)return;if(d>0&&i.unica){notify('Prenda única: solo hay 1');return;}i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();}
+function updItemQty(id,sz,d){const i=cart.find(x=>x.id===id&&x.size===sz);if(!i)return;if(d>0&&i.unica){notify('Prenda única: solo hay 1');return;}i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();var _b=document.querySelector('[data-q="'+id+'|'+sz+'|'+d+'"]');if(_b)_b.focus();}
 function rmItem(id,sz){cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();}
 function openCart(){
   window._cartLastFocus=document.activeElement;
-  document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('show');document.body.style.overflow='hidden';
+  document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('show');document.body.style.overflow='hidden';_inertOn();
   const closeBtn=document.querySelector('#cartDrawer .cart-close');if(closeBtn)closeBtn.focus();
 }
 function closeCart(){
-  document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('show');document.body.style.overflow='';
+  document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('show');document.body.style.overflow='';_inertOff();
   if(window._cartLastFocus&&typeof window._cartLastFocus.focus==='function')window._cartLastFocus.focus();
 }
 function applyDisc(ctx){
@@ -1472,7 +1512,7 @@ function submitOrder(){
   var dir=document.getElementById('chkDireccion').value.trim();
   var ciudad=document.getElementById('chkCiudad').value.trim();
   if(cart.length===0){notify('Tu carrito está vacío');return;}
-  if(!contact){notify('Ingresa tu email o teléfono');fieldError('chkContact','errContact');return;}
+  if(!contact||(!/^\S+@\S+\.\S+$/.test(contact)&&contact.replace(/\D/g,'').length<8)){notify('Ingresa un email o teléfono válido');fieldError('chkContact','errContact');return;}
   if(!nombre){notify('Ingresa tu nombre');fieldError('chkNombre','errNombre');return;}
   if(!dir){notify('Ingresa tu dirección de envío');fieldError('chkDireccion','errDireccion');return;}
   if(!ciudad){notify('Ingresa tu ciudad');fieldError('chkCiudad','errCiudad');return;}
@@ -1529,10 +1569,10 @@ function showHome(){
 }
 function openSearch(){
   window._searchLastFocus=document.activeElement;
-  document.getElementById('searchOverlay').classList.add('show');document.getElementById('searchInput').focus();document.body.style.overflow='hidden';doSearch('');
+  document.getElementById('searchOverlay').classList.add('show');_inertOn();document.getElementById('searchInput').focus();document.body.style.overflow='hidden';doSearch('');
 }
 function closeSearch(){
-  document.getElementById('searchOverlay').classList.remove('show');document.body.style.overflow='';
+  document.getElementById('searchOverlay').classList.remove('show');document.body.style.overflow='';_inertOff();
   if(window._searchLastFocus&&typeof window._searchLastFocus.focus==='function')window._searchLastFocus.focus();
 }
 function doSearch(q){
@@ -1726,16 +1766,16 @@ function toggleMenu(){
     window._menuLastFocus=document.activeElement;
     menu.classList.add('open');
     overlay.classList.add('show');
-    btn.classList.add('open');
-    document.body.style.overflow='hidden';
+    btn.classList.add('open');btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';_inertOn();
     const closeBtn=document.querySelector('#sideMenu .side-menu-close');if(closeBtn)closeBtn.focus();
   }
 }
 function closeMenu(){
   document.getElementById('sideMenu').classList.remove('open');
   document.getElementById('menuOverlay').classList.remove('show');
-  document.getElementById('hamburgerBtn').classList.remove('open');
-  document.body.style.overflow='';
+  document.getElementById('hamburgerBtn').classList.remove('open');document.getElementById('hamburgerBtn').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';_inertOff();
   if(window._menuLastFocus&&typeof window._menuLastFocus.focus==='function')window._menuLastFocus.focus();
 }
 
@@ -1797,7 +1837,7 @@ function pCardPreview(p) {
       ${agotado}
     </div>
     <div class="catalog-preview-info">
-      <div class="catalog-preview-name"${so ? ' style="text-decoration:line-through;opacity:.4"' : ''}>${p.name}</div>
+      <div class="catalog-preview-name"${so ? ' style="text-decoration:line-through;color:#6b6b6b"' : ''}>${p.name}</div>
       ${priceRow}
     </div>
   </div>`;
@@ -1826,7 +1866,11 @@ fillPreviewGrid('jockey','jockey-grid');
 fillPreviewGrid('limited','previewLimited');
 
 updCart();
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeCart();closeMenu();}});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;
+  if(document.getElementById('searchOverlay').classList.contains('show'))closeSearch();
+  else if(document.getElementById('cartDrawer').classList.contains('open'))closeCart();
+  else if(document.getElementById('sideMenu').classList.contains('open'))closeMenu();
+});
 
 
 
@@ -1857,11 +1901,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();close
   }
   setTimeout(initObserver, 80);
   setTimeout(function(){
-    // Safety net: reveal anything still invisible after 1.2s
+    // Safety net: reveal anything still invisible (después de que termina la intro, ~3,4 s)
     document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){
       el.classList.add('visible');
     });
-  }, 1200);
+  }, 4800);
 })();
 
 // ── A11Y: keep hidden "pages" out of the accessibility tree ──
