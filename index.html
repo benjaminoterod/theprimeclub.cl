@@ -716,6 +716,23 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
 .pending-order a{background:#0a7a3d;color:#fff;font-weight:700;padding:12px 14px;text-decoration:none;white-space:nowrap;letter-spacing:.04em}
 .pending-order button{color:#fff;opacity:.75;min-width:44px;min-height:44px;font-size:16px}
 .src-empty{grid-column:1/-1;color:rgba(255,255,255,.75);font-size:14px;line-height:1.6;padding:2rem 0}
+
+/* PDP: error de talla, agotado, móvil */
+.pp-size-err{display:none;color:#c0392b;font-size:12px;font-weight:700;margin:-.9rem 0 1.1rem}
+.pp-size-err.show{display:block}
+.pp-sizes.err .size-opt:not(.unavail){border-color:#c0392b}
+.size-opt.unavail{opacity:1;color:#6b6b6b;background:#f5f5f5;text-decoration:line-through}
+.buy-btn:disabled{opacity:.4;cursor:not-allowed}
+.pp-notify{display:block;text-align:center;font-size:12px;font-weight:700;color:#0a0a0a;text-decoration:underline;padding:14px 0 4px}
+@media(max-width:960px){
+  .gallery-main{min-height:0;aspect-ratio:1/1;max-height:56svh}
+  .pp-detail{display:flex;flex-direction:column;padding:1.4rem 1.2rem 2rem;border-left:none}
+  .pp-detail .pp-desc{order:20;margin:1.4rem 0 0}
+  .pp-detail .pp-divider{display:none}
+  .pp-detail .pp-features{order:21}
+  .pp-detail .add-btn{position:sticky;bottom:0;z-index:30;box-shadow:0 -10px 18px rgba(255,255,255,.96)}
+  .pp-back{min-height:44px}
+}
 </style>
 </head>
 <body>
@@ -989,6 +1006,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <div class="pp-divider"></div>
       <div class="pp-label">Talla <span id="ppSizeSel" style="color:#595959;font-weight:400;text-transform:none;letter-spacing:0;font-size:12px"></span></div>
       <div class="pp-sizes" id="ppSizes"></div>
+      <div class="pp-size-err" id="ppSizeErr" role="alert">Elige una talla para continuar.</div>
       <p style="font-size:11px;color:#595959;margin-top:8px">Elige con cuidado tu talla — no hacemos cambios ni devoluciones. <a href="#" onclick="event.preventDefault();openInfo('tallas')" style="color:#0a0a0a;text-decoration:underline">Ver guía de tallas →</a></p>
       <div class="qty-row">
         <span class="pp-label" style="margin-bottom:0">Cantidad</span>
@@ -1003,6 +1021,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
         AGREGAR AL CARRITO
       </button>
       <button class="buy-btn" onclick="ppBuy()">COMPRAR AHORA</button>
+      <a id="ppNotify" class="pp-notify" style="display:none" target="_blank" rel="noopener" href="#">🔔 Avísame por WhatsApp si vuelve a haber</a>
       <ul class="pp-features">
         <li class="pp-feat">Producto nuevo y original</li>
         <li class="pp-feat">Envío a todo Chile</li>
@@ -1147,6 +1166,15 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
   <button type="button" aria-label="Cerrar aviso de pedido pendiente" onclick="markOrderSent()">✕</button>
 </div>
 <script>
+function _pushV(v){try{history.pushState({v:v},'');}catch(e){}}
+window.addEventListener('popstate',function(){
+  var on=function(id){var e=document.getElementById(id);return e&&e.classList.contains('active');};
+  if(on('successPage')){showHome();return;}
+  if(on('checkoutPage')){backCart();return;}
+  if(on('productPage')){closeProd();return;}
+  if(on('infoPage')){closeInfo();return;}
+  if(on('catalogPage')){closeCatalog();return;}
+});
 function markOrderSent(){
   try{var o=JSON.parse(localStorage.getItem('primeclubLastOrder')||'null');if(o){o.sent=true;localStorage.setItem('primeclubLastOrder',JSON.stringify(o));}}catch(e){}
   var b=document.getElementById('pendingOrder');if(b)b.classList.remove('show');
@@ -1279,7 +1307,8 @@ function fillGrid(prods,id){
 
 function openProd(id){
   const p=allProds.find(x=>x.id===id);if(!p)return;
-  curProd=p;ppSize=null;ppQty=1;
+  if(!document.getElementById('productPage').classList.contains('active'))window._ppFromScroll=window.scrollY;
+  curProd=p;ppSize=null;ppQty=1;clearSizeErr();
   document.getElementById('ppBrand').textContent=p.brand;
   document.getElementById('ppName').textContent=p.name;
   document.getElementById('ppPrice').innerHTML=`${fmt(p.price)} CLP${p.oldPrice?` <del>${fmt(p.oldPrice)} CLP</del>`:''}`;
@@ -1296,9 +1325,11 @@ function openProd(id){
     return`<div class="gal-thumb ${i===0?'active':''}" onclick="selThumb(this)" role="button" tabindex="0" aria-label="Vista ${i+1}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selThumb(this)}">${p.emoji}</div>`;
   }).join('');
   const so=p.unavail.length>0&&p.sizes.every(s=>p.unavail.includes(s));
-  document.getElementById('ppSizes').innerHTML=p.sizes.map(s=>`<button class="size-opt ${p.unavail.includes(s)?'unavail':''}" onclick="${!p.unavail.includes(s)?`ppPickSz('${s}',this)`:''}">${s}</button>`).join('');
+  document.getElementById('ppSizes').innerHTML=p.sizes.map(s=>{const u=p.unavail.includes(s);return `<button type="button" class="size-opt ${u?'unavail':''}" ${u?'disabled aria-disabled="true"':''} aria-pressed="false" aria-label="Talla ${s}${u?' agotada':''}" onclick="${!u?`ppPickSz('${s}',this)`:''}">${s}</button>`;}).join('');
   const btn=document.getElementById('ppAddBtn');
-  btn.className=`add-btn${so?' agotado':''}`;
+  btn.className=`add-btn${so?' agotado':''}`;btn.disabled=so;
+  const bb=document.querySelector('#productPage .buy-btn');if(bb)bb.disabled=so;
+  const nt=document.getElementById('ppNotify');if(nt){nt.style.display=so?'block':'none';nt.href='https://wa.me/56994195064?text='+encodeURIComponent('Hola! Quiero que me avisen si vuelve a haber stock de '+p.name);}
   btn.innerHTML=so?'AGOTADO':'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> AGREGAR AL CARRITO';
   const cat_pg=document.getElementById('catalogPage');
   if(cat_pg&&cat_pg.classList.contains('active')){window._fromCatalog=true;cat_pg.classList.remove('active');cat_pg.style.display='none';}
@@ -1307,6 +1338,7 @@ function openProd(id){
   document.getElementById('productPage').style.display='block';
   document.getElementById('checkoutPage').classList.remove('active');
   window.scrollTo(0,0);
+  _pushV('prod');
 }
 function closeProd(){
   document.getElementById('productPage').classList.remove('active');
@@ -1318,10 +1350,12 @@ function closeProd(){
   } else {
     document.getElementById('homepage').classList.remove('hidden');
   }
-  window.scrollTo(0,0);
+  window.scrollTo(0,window._ppFromScroll||0);
 }
-function ppPickSz(s,btn){ppSize=s;document.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');document.getElementById('ppSizeSel').textContent='— '+s;}
-function chgQty(d){ppQty=Math.max(1,Math.min(10,ppQty+d));document.getElementById('qtyNum').textContent=ppQty;}
+function clearSizeErr(){var a=document.getElementById('ppSizes'),e=document.getElementById('ppSizeErr');if(a)a.classList.remove('err');if(e)e.classList.remove('show');}
+function showSizeErr(){var a=document.getElementById('ppSizes'),e=document.getElementById('ppSizeErr');if(a)a.classList.add('err');if(e)e.classList.add('show');if(a)a.scrollIntoView({block:'center'});}
+function ppPickSz(s,btn){ppSize=s;clearSizeErr();document.querySelectorAll('.size-opt').forEach(b=>{b.classList.remove('sel');b.setAttribute('aria-pressed','false');});btn.classList.add('sel');btn.setAttribute('aria-pressed','true');document.getElementById('ppSizeSel').textContent='— '+s;}
+function chgQty(d){ppQty=Math.max(1,Math.min(curProd&&curProd.badge==='unica'?1:10,ppQty+d));document.getElementById('qtyNum').textContent=ppQty;}
 function swImgIdx(el,i){if(curProd&&curProd.imgs[i])swImg(el,curProd.imgs[i]);}
 function swImg(el,src){document.querySelectorAll('.gal-thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');const w=document.getElementById('galWrap'),i=document.getElementById('galImg');w.style.display='';i.src=src;i.alt=curProd?curProd.name:'';document.getElementById('galPh').style.display='none';document.getElementById('galleryMain').classList.remove('zoomed');}
 function selThumb(el){document.querySelectorAll('.gal-thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
@@ -1329,17 +1363,22 @@ function toggleZoom(el){el.classList.toggle('zoomed');}
 function ppAdd(){
   if(!curProd)return false;
   const so=curProd.unavail.length>0&&curProd.sizes.every(s=>curProd.unavail.includes(s));if(so)return false;
-  if(!ppSize&&curProd.sizes[0]!=='ÚNICA'){notify('Selecciona una talla');return false;}
+  if(!ppSize&&curProd.sizes[0]!=='ÚNICA'){showSizeErr();notify('Selecciona una talla');return false;}
+  if(curProd.badge==='unica'&&cart.some(x=>x.id===curProd.id)){notify('Es una prenda única: ya la tienes en el carrito');return false;}
   const sz=ppSize||curProd.sizes[0];
   for(let i=0;i<ppQty;i++){const ex=cart.find(x=>x.id===curProd.id&&x.size===sz);if(ex)ex.qty++;else cart.push(cartItem(curProd,sz));}
   updCart();notify('¡'+curProd.name+' agregado!');closeProd();setTimeout(openCart,300);
   return true;
 }
 function ppBuy(){if(!ppAdd())return;setTimeout(()=>{closeCart();goCheckout();},400);}
-function cartItem(p,size){return {id:p.id,name:p.name,brand:p.brand,price:p.price,emoji:p.emoji,imgs:p.imgs&&p.imgs[0]?[p.imgs[0]]:null,size:size,qty:1};}
+function cartItem(p,size){return {unica:p.badge==='unica',id:p.id,name:p.name,brand:p.brand,price:p.price,emoji:p.emoji,imgs:p.imgs&&p.imgs[0]?[p.imgs[0]]:null,size:size,qty:1};}
 function qAdd(id){
   const p=allProds.find(x=>x.id===id);if(!p)return;
-  const sz=p.sizes.find(s=>!p.unavail.includes(s))||p.sizes[0];
+  const avail=p.sizes.filter(s=>!p.unavail.includes(s));
+  if(!avail.length)return;
+  if(avail.length>1){openProd(id);notify('Elige tu talla');return;}
+  const sz=avail[0];
+  if(p.badge==='unica'&&cart.some(x=>x.id===p.id)){notify('Es una prenda única: ya la tienes en el carrito');return;}
   const ex=cart.find(x=>x.id===p.id&&x.size===sz);if(ex)ex.qty++;else cart.push(cartItem(p,sz));
   updCart();notify('¡'+p.name+' agregado!');
 }
@@ -1370,7 +1409,7 @@ function updCart(){
     footer.style.display='block';
   }
 }
-function updItemQty(id,sz,d){const i=cart.find(x=>x.id===id&&x.size===sz);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();}
+function updItemQty(id,sz,d){const i=cart.find(x=>x.id===id&&x.size===sz);if(!i)return;if(d>0&&i.unica){notify('Prenda única: solo hay 1');return;}i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();}
 function rmItem(id,sz){cart=cart.filter(x=>!(x.id===id&&x.size===sz));updCart();}
 function openCart(){
   window._cartLastFocus=document.activeElement;
@@ -1394,7 +1433,7 @@ function goCheckout(){
   if(cart.length===0){notify('Tu carrito está vacío');return;}
   closeCart();document.getElementById('homepage').classList.add('hidden');document.getElementById('productPage').style.display='none';
   document.getElementById('checkoutPage').classList.add('active');document.getElementById('successPage').classList.remove('active');
-  window.scrollTo(0,0);renderSum();
+  window.scrollTo(0,0);renderSum();_pushV('chk');
 }
 function backCart(){document.getElementById('checkoutPage').classList.remove('active');document.getElementById('homepage').classList.remove('hidden');window.scrollTo(0,0);openCart();}
 function selShip(el,cost){shipCost=cost;document.querySelectorAll('.ship-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');renderSum();}
@@ -1640,6 +1679,7 @@ const infoPages = {
 };
 
 function openInfo(page) {
+  if(!document.getElementById('infoPage').classList.contains('active'))window._infoFromScroll=window.scrollY;
   // Disconnect scroll observer to prevent homepage sections from triggering
   if(window._scrollObserver) window._scrollObserver.disconnect();
   const data = infoPages[page];
@@ -1655,6 +1695,7 @@ function openInfo(page) {
   document.getElementById('infoPage').classList.add('active');
   document.getElementById('infoPage').style.display = 'block';
   window.scrollTo(0, 0);
+  _pushV('info');
 }
 
 function closeInfo() {
@@ -1664,7 +1705,7 @@ function closeInfo() {
   document.getElementById('infoPage').classList.remove('active');
   document.getElementById('infoPage').style.display = 'none';
   document.getElementById('homepage').classList.remove('hidden');
-  window.scrollTo(0, 0);
+  window.scrollTo(0, window._infoFromScroll||0);
 }
 
 function toggleFaq(el) {
@@ -1704,6 +1745,7 @@ function closeMenu(){
 const catalogTitles = {poleron:'POLERONES', polera:'URBANDROP', womanline:'WOMANLINE', jockey:'JOCKEYS', limited:'LIMITED DROPS'};
 
 function openCatalog(cat) {
+  if(!document.getElementById('catalogPage').classList.contains('active'))window._catFromScroll=window.scrollY;
   if(window._scrollObserver) window._scrollObserver.disconnect();
   const prods = essentialsProds.filter(p => p.cat === cat);
   document.getElementById('catalogPageTitle').textContent = catalogTitles[cat];
@@ -1721,6 +1763,7 @@ function openCatalog(cat) {
   document.getElementById('successPage').classList.remove('active');
   const ip = document.getElementById('infoPage'); if(ip){ip.classList.remove('active');ip.style.display='none';}
   window.scrollTo(0,0);
+  _pushV('cat');
 }
 
 function closeCatalog() {
@@ -1729,7 +1772,7 @@ function closeCatalog() {
   document.getElementById('catalogPage').classList.remove('active');
   document.getElementById('catalogPage').style.display = 'none';
   document.getElementById('homepage').classList.remove('hidden');
-  window.scrollTo(0,0);
+  window.scrollTo(0,window._catFromScroll||0);
 }
 
 // Preview cards (3 items, square format)
