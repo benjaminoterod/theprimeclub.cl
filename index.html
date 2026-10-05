@@ -43,9 +43,9 @@
     {"@type":"Product","position":1,"name":"Black Kiss Hoodie","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"Polerones","offers":{"@type":"Offer","priceCurrency":"CLP","price":"30990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":2,"name":"Coffe Kiss Hoodie","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"Polerones","offers":{"@type":"Offer","priceCurrency":"CLP","price":"30990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":3,"name":"White Kiss Hoodie","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"Polerones","offers":{"@type":"Offer","priceCurrency":"CLP","price":"30990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":4,"name":"Black One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":5,"name":"White One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":6,"name":"Coffe One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":4,"name":"Black One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":5,"name":"White One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":6,"name":"Coffe One","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"URBANDROP","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":7,"name":"Womanline Beige","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":8,"name":"Womanline Café","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":9,"name":"Womanline Negra","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"WOMANLINE","offers":{"@type":"Offer","priceCurrency":"CLP","price":"24990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
@@ -274,7 +274,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 .bank-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #e0e0e0;gap:.5rem}
 .bank-label{font-size:11px;color:#595959}
 .bank-value{font-size:12px;font-weight:700}
-.copy-btn{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid #e0e0e0;padding:3px 8px;color:#595959;background:#fff}
+.copy-btn{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid #e0e0e0;padding:0 12px;min-height:32px;color:#595959;background:#fff}
 .copy-btn:hover{border-color:#666;color:#1a1a1a}
 .copy-all{width:100%;background:#0a0a0a;color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:11px;margin-top:10px}
 .copy-all:hover{background:#333}
@@ -706,6 +706,16 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
   .feature-text span,.feature-text h2,.feature-text p{transition:none!important;opacity:1!important;transform:none!important}
   .community-cell{transition:none!important;opacity:1!important;transform:none!important}
 }
+
+/* POST-PAGO */
+.success-steps{text-align:left;max-width:380px;width:100%;padding-left:1.2rem;font-size:14px;line-height:1.6;color:#333;display:flex;flex-direction:column;gap:.5rem}
+.wa-sticky{position:sticky;bottom:12px;display:block;width:100%;max-width:380px;text-align:center;background:#0a7a3d;color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 24px;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.25);z-index:5}
+.pending-order{position:fixed;left:12px;right:12px;bottom:12px;z-index:700;background:#0a0a0a;color:#fff;display:none;align-items:center;gap:10px;padding:8px 8px 8px 14px;font-size:12px;box-shadow:0 6px 24px rgba(0,0,0,.35);max-width:520px;margin:0 auto}
+.pending-order.show{display:flex}
+.pending-order span{flex:1}
+.pending-order a{background:#0a7a3d;color:#fff;font-weight:700;padding:12px 14px;text-decoration:none;white-space:nowrap;letter-spacing:.04em}
+.pending-order button{color:#fff;opacity:.75;min-width:44px;min-height:44px;font-size:16px}
+.src-empty{grid-column:1/-1;color:rgba(255,255,255,.75);font-size:14px;line-height:1.6;padding:2rem 0}
 </style>
 </head>
 <body>
@@ -772,6 +782,9 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <button class="side-menu-item" type="button" onclick="closeMenu();openCatalog('jockey')">JOCKEYS →</button>
       <button class="side-menu-item" type="button" onclick="closeMenu();openCatalog('polera')">
         URBANDROP <span class="side-menu-item-arrow">→</span>
+      </button>
+      <button class="side-menu-item" type="button" onclick="closeMenu();openCatalog('limited')">
+        LIMITED DROPS <span class="side-menu-item-arrow">→</span>
       </button>
     </div>
 
@@ -840,7 +853,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-title-top">
-      <div class="ht-tag-row"><span class="ht-line"></span><span>Colección 2025</span></div>
+      <div class="ht-tag-row"><span class="ht-line"></span><span>Desde La Serena</span></div>
       <h1 class="ht-title"><span class="ht-w1">PRIME</span><span class="ht-w2">CLUB<img src="data:image/png;base64,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" alt="" alt="" class="ht-kiss"/></span></h1>
       <div class="ht-underline"></div>
     </div>
@@ -953,7 +966,7 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <span style="color:#8a8a8a">·</span>
       <a href="#" onclick="event.preventDefault();showHome();setTimeout(()=>openInfo('faq'),100)" style="color:#ccc;font-size:12px;font-weight:600;letter-spacing:.1em;text-decoration:none;text-transform:uppercase">Ayuda</a>
     </div>
-    <div style="color:#8a8a8a;font-size:10px;letter-spacing:.08em">© 2025 PRIMECLUB — 100% AUTÉNTICAS. Envíos a todo Chile.</div>
+    <div style="color:#8a8a8a;font-size:10px;letter-spacing:.08em">© 2026 PRIMECLUB — 100% AUTÉNTICAS. Envíos a todo Chile.</div>
   </div>
 </footer>
 
@@ -1010,11 +1023,11 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
     <div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-txt">Tu carrito está vacío</div></div>
   </div>
   <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="disc-row">
+    <div class="disc-row" style="display:none">
       <input class="disc-inp" type="text" placeholder="Código de descuento" id="cartDiscInp" aria-label="Código de descuento"/>
       <button class="disc-apply" onclick="applyDisc('cart')">Aplicar</button>
     </div>
-    <div class="disc-ok" id="cartDiscOk">✓ Descuento aplicado</div>
+    <div class="disc-ok" id="cartDiscOk" style="display:none">✓ Descuento aplicado</div>
     <div class="cart-totals">
       <div class="cart-total-row"><span>Subtotal</span><span id="cartSub">$0</span></div>
       <div class="cart-total-row" id="cartDiscRow" style="display:none;color:green"><span>Descuento</span><span id="cartDiscAmt" style="color:green"></span></div>
@@ -1056,11 +1069,11 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
       <div style="margin-bottom:2rem">
         <div class="ship-opts" role="radiogroup" aria-label="Método de envío">
           <label class="ship-opt sel" for="shipStarken"><input type="radio" id="shipStarken" name="shipMethod" checked onchange="selShip(this.closest('.ship-opt'),5990)" style="position:absolute;opacity:0;width:1px;height:1px"/><div class="rdot"></div><div class="ship-info"><div class="ship-name">STARKEN</div><div class="ship-time">3-5 días hábiles · Todo Chile</div></div><span class="ship-price">$5.990</span></label>
-          <label class="ship-opt" for="shipExpress"><input type="radio" id="shipExpress" name="shipMethod" onchange="selShip(this.closest('.ship-opt'),7990)" style="position:absolute;opacity:0;width:1px;height:1px"/><div class="rdot"></div><div class="ship-info"><div class="ship-name">Envío Express</div><div class="ship-time">1-2 días · La Serena y alrededores</div></div><span class="ship-price">$7.990</span></label>
+          <label class="ship-opt" for="shipExpress"><input type="radio" id="shipExpress" name="shipMethod" onchange="selShip(this.closest('.ship-opt'),7990)" style="position:absolute;opacity:0;width:1px;height:1px"/><div class="rdot"></div><div class="ship-info"><div class="ship-name">Envío Express</div><div class="ship-time">1-2 días hábiles · Todo Chile</div></div><span class="ship-price">$7.990</span></label>
         </div>
       </div>
       <h2 class="chk-title">Pago</h2>
-      <p style="font-size:12px;color:#595959;margin-bottom:1rem">Somos PRIMECLUB, streetwear desde La Serena. Confirmamos tu pedido por WhatsApp en menos de 2 horas hábiles.</p>
+      <p style="font-size:12px;color:#595959;margin-bottom:1rem">Somos PRIMECLUB, streetwear desde La Serena. Te respondemos por WhatsApp casi al instante.</p>
       <div style="margin-bottom:2rem">
         <div class="pay-methods">
           <div class="pay-method sel">
@@ -1079,15 +1092,11 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
           </div>
         </div>
       </div>
-      <h2 class="chk-title">Dirección de facturación</h2>
-      <div class="bill-opts" role="radiogroup" aria-label="Dirección de facturación">
-        <label class="bill-opt sel" for="billSame"><input type="radio" id="billSame" name="billType" checked onchange="selBill(this.closest('.bill-opt'))" style="position:absolute;opacity:0;width:1px;height:1px"/><div class="rdot"></div><span style="font-size:13px">Misma que la de envío</span></label>
-        <label class="bill-opt" for="billOther"><input type="radio" id="billOther" name="billType" onchange="selBill(this.closest('.bill-opt'))" style="position:absolute;opacity:0;width:1px;height:1px"/><div class="rdot"></div><span style="font-size:13px">Usar dirección distinta</span></label>
-      </div>
+      
     </div>
     <div class="chk-right">
       <div class="sum-items" id="sumItems"></div>
-      <div class="sum-disc-row">
+      <div class="sum-disc-row" style="display:none">
         <input class="sum-disc-inp" type="text" placeholder="Código de descuento" id="chkDiscInp" aria-label="Código de descuento"/>
         <button class="sum-disc-btn" onclick="applyDisc('chk')">Aplicar</button>
       </div>
@@ -1109,23 +1118,52 @@ html.intro-lock,html.intro-lock body{overflow:hidden;height:100%}
 <!-- SUCCESS -->
 <div id="successPage">
   <div class="success-check">✓</div>
-  <h2 class="success-h1">PEDIDO<br>LISTO.</h2>
+  <h2 class="success-h1">FALTA UN<br>PASO.</h2>
   <div class="success-order">Orden #<span id="orderNum">PC-0001</span></div>
   <p class="success-desc" id="successDesc"></p>
+  <ol class="success-steps">
+    <li><strong>Transfiere</strong> el monto exacto a la cuenta de abajo.</li>
+    <li><strong>Envíanos el comprobante</strong> por WhatsApp. Tu pedido queda confirmado cuando lo recibimos.</li>
+  </ol>
   <div class="success-bank" id="successItemsBox" style="display:none;margin-top:1rem">
     <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem">Tu pedido:</div>
     <div id="successItems"></div>
   </div>
   <div class="success-bank" id="successBank" style="display:none">
     <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem">Transferir a:</div>
-    <div class="bank-row"><span class="bank-label">CuentaRUT BancoEstado</span><span class="bank-value">22302547</span></div>
-    <div class="bank-row"><span class="bank-label">RUT</span><span class="bank-value">22.302.547-1</span></div>
+    <div class="bank-row"><span class="bank-label">CuentaRUT BancoEstado</span><span class="bank-value" id="sBankCta">22302547</span><button class="copy-btn" id="scp1" onclick="copyT(document.getElementById('sBankCta').textContent,'scp1')" aria-label="Copiar número de cuenta">COPIAR</button></div>
+    <div class="bank-row"><span class="bank-label">RUT</span><span class="bank-value" id="sBankRut">22.302.547-1</span><button class="copy-btn" id="scp2" onclick="copyT(document.getElementById('sBankRut').textContent,'scp2')" aria-label="Copiar RUT">COPIAR</button></div>
     <div class="bank-row"><span class="bank-label">Nombre</span><span class="bank-value">Tomás Alejandro Ramos Araya</span></div>
-    <div class="bank-row" style="margin-top:8px;padding-top:8px;border-top:1px solid #e0e0e0"><span class="bank-label">Monto exacto</span><span class="bank-value" id="successAmt" style="font-size:18px"></span></div>
+    <div class="bank-row" style="margin-top:8px;padding-top:8px;border-top:1px solid #e0e0e0"><span class="bank-label">Monto exacto</span><span class="bank-value" id="successAmt" style="font-size:18px"></span><button class="copy-btn" id="scp3" onclick="copyT(document.getElementById('successAmt').dataset.raw||'','scp3')" aria-label="Copiar monto">COPIAR</button></div>
   </div>
-  <a id="waComprobanteBtn" href="https://wa.me/56994195064" target="_blank" style="display:block;text-align:center;background:#25D366;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;margin-top:1.2rem;text-decoration:none">📲 ENVIAR COMPROBANTE POR WHATSAPP</a>
-  <button style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:14px 30px;background:#0a0a0a;color:#fff;margin-top:.8rem" onclick="showHome()">Seguir Comprando</button>
+  <a id="waComprobanteBtn" class="wa-sticky" href="https://wa.me/56994195064" target="_blank" rel="noopener" onclick="markOrderSent()">📲 PASO 2 · ENVIAR COMPROBANTE POR WHATSAPP</a>
+  <button style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:14px 30px;background:#0a0a0a;color:#fff" onclick="showHome()">Seguir Comprando</button>
 </div>
+
+<!-- PEDIDO PENDIENTE (recuerda enviar el comprobante si el cliente cerró la página) -->
+<div id="pendingOrder" class="pending-order" role="status">
+  <span id="pendingOrderTxt"></span>
+  <a id="pendingOrderBtn" href="#" target="_blank" rel="noopener" onclick="markOrderSent()">Enviar comprobante</a>
+  <button type="button" aria-label="Cerrar aviso de pedido pendiente" onclick="markOrderSent()">✕</button>
+</div>
+<script>
+function markOrderSent(){
+  try{var o=JSON.parse(localStorage.getItem('primeclubLastOrder')||'null');if(o){o.sent=true;localStorage.setItem('primeclubLastOrder',JSON.stringify(o));}}catch(e){}
+  var b=document.getElementById('pendingOrder');if(b)b.classList.remove('show');
+}
+function showPendingOrder(){
+  var b=document.getElementById('pendingOrder');if(!b)return;
+  try{
+    var o=JSON.parse(localStorage.getItem('primeclubLastOrder')||'null');
+    if(o&&o.num&&o.waUrl&&!o.sent&&(Date.now()-o.ts)<172800000){
+      document.getElementById('pendingOrderTxt').textContent='Pedido #'+o.num+' pendiente de comprobante';
+      document.getElementById('pendingOrderBtn').href=o.waUrl;
+      b.classList.add('show');
+    }
+  }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',showPendingOrder);
+</script>
 
 
 <script>
@@ -1402,7 +1440,7 @@ function submitOrder(){
   var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
   var disc=Math.round(sub*discPct);
   var total=sub-disc+effectiveShip(sub);
-  var num='PC-'+String(Math.floor(Math.random()*9000)+1000);
+  var num='PC-'+Date.now().toString(36).toUpperCase().slice(-5);
   var snap=cart.map(function(i){return {name:i.name,size:i.size,qty:i.qty,price:i.price};});
   var apellidos=document.getElementById('chkApellidos')?document.getElementById('chkApellidos').value.trim():'';
   var dpto=document.getElementById('chkDpto')?document.getElementById('chkDpto').value.trim():'';
@@ -1411,8 +1449,8 @@ function submitOrder(){
   var dirFull=dir+(dpto?' '+dpto:'')+', '+ciudad+(region?', '+region:'')+(cp?' ('+cp+')':'');
 
   document.getElementById('orderNum').textContent=num;
-  document.getElementById('successAmt').textContent=fmt(total)+' CLP';
-  document.getElementById('successDesc').textContent='Hola '+nombre+'! Tu pedido #'+num+' fue recibido. Realiza la transferencia y envíanos el comprobante por WhatsApp.';
+  var _sa=document.getElementById('successAmt');_sa.textContent=fmt(total)+' CLP';_sa.dataset.raw=String(total);
+  document.getElementById('successDesc').textContent='¡Hola '+nombre+'! Reservamos tu pedido #'+num+'. Se confirma cuando recibimos tu comprobante por WhatsApp.';
   document.getElementById('successBank').style.display='block';
   var itemsBox=document.getElementById('successItemsBox');
   if(itemsBox){
@@ -1431,7 +1469,7 @@ function submitOrder(){
   if(btn) btn.href=waUrl;
 
   try{
-    localStorage.setItem('primeclubLastOrder',JSON.stringify({num:num,items:snap,total:total,contact:contact,nombre:nombre+' '+apellidos,direccion:dirFull,waUrl:waUrl,ts:Date.now()}));
+    localStorage.setItem('primeclubLastOrder',JSON.stringify({num:num,items:snap,total:total,contact:contact,nombre:nombre+' '+apellidos,direccion:dirFull,waUrl:waUrl,sent:false,ts:Date.now()}));
   }catch(e){}
 
   cart=[];discPct=0;updCart();window.scrollTo(0,0);
@@ -1448,6 +1486,7 @@ function showHome(){
   document.querySelectorAll('#homepage .reveal, #homepage .reveal-stagger').forEach(el => el.classList.add('visible'));
   if(window._scrollObserver) window._scrollObserver.disconnect();
   window.scrollTo(0,0);
+  if(typeof showPendingOrder==='function')showPendingOrder();
 }
 function openSearch(){
   window._searchLastFocus=document.activeElement;
@@ -1459,8 +1498,12 @@ function closeSearch(){
 }
 function doSearch(q){
   const res=document.getElementById('searchResults');
-  const list=q.length<2?allProds.slice(0,8):allProds.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())||p.brand.toLowerCase().includes(q.toLowerCase()));
-  res.innerHTML=list.slice(0,8).map(p=>`<div class="src-card" onclick="closeSearch();openProd(${p.id})" role="button" tabindex="0" aria-label="Ver ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeSearch();openProd(${p.id})}"><div class="src-img">${p.imgs&&p.imgs[0]?`<img src="${p.imgs[0]}" alt="${p.name}">`:p.emoji}</div><div class="src-name">${p.name}</div><div class="src-price">${fmt(p.price)} CLP</div></div>`).join('');
+  const nz=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const catWords={poleron:'poleron polerones hoodie hoodies buzo',polera:'polera poleras urbandrop camiseta',womanline:'womanline mujer mujeres',jockey:'jockey jockeys gorra gorras cap',limited:'limited drops drop musculosa musculosas'};
+  const toks=nz(q).split(/\s+/).filter(Boolean);
+  const list=q.length<2?allProds.slice(0,8):allProds.filter(p=>{const hay=nz(p.name+' '+p.brand+' '+(catWords[p.cat]||''));return toks.every(t=>hay.includes(t));});
+  const emptyMsg='<div class="src-empty">No encontramos "'+q.replace(/[<>&"]/g,'')+'". Prueba con "polerón", "polera", "jockey" o "mujer".</div>';
+  res.innerHTML=!list.length?emptyMsg:list.slice(0,8).map(p=>`<div class="src-card" onclick="closeSearch();openProd(${p.id})" role="button" tabindex="0" aria-label="Ver ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeSearch();openProd(${p.id})}"><div class="src-img">${p.imgs&&p.imgs[0]?`<img src="${p.imgs[0]}" alt="${p.name}">`:p.emoji}</div><div class="src-name">${p.name}</div><div class="src-price">${fmt(p.price)} CLP</div></div>`).join('');
 }
 function copyAll(){
   const total=document.getElementById('sumTotal')?document.getElementById('sumTotal').textContent:'';
@@ -1480,30 +1523,18 @@ const infoPages = {
       <div class="talla-section">
         <h3>POLERONES</h3>
         <p class="talla-note" style="font-size:15px;line-height:1.7">Corte oversize. Disponibles en L y XL.</p>
-        <div class="talla-table-wrap"><table class="talla-table" style="margin-top:1rem">
-          <tr><th>Talla</th><th>Ancho pecho</th><th>Largo total</th><th>Manga</th></tr>
-          <tr><td>L</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr><td>XL</td><td>—</td><td>—</td><td>—</td></tr>
-        </table></div>
       </div>
       <div class="talla-section" style="margin-top:2rem">
         <h3>URBANDROP</h3>
         <p class="talla-note" style="font-size:15px;line-height:1.7">Corte oversize. Disponibles en M y XL.</p>
-        <div class="talla-table-wrap"><table class="talla-table" style="margin-top:1rem">
-          <tr><th>Talla</th><th>Ancho pecho</th><th>Largo total</th><th>Manga</th></tr>
-          <tr><td>M</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr><td>XL</td><td>—</td><td>—</td><td>—</td></tr>
-        </table></div>
       </div>
       <div class="talla-section" style="margin-top:2rem">
         <h3>WOMANLINE</h3>
         <p class="talla-note" style="font-size:15px;line-height:1.7">Corte crop oversize. Disponibles en XS, M y L.</p>
-        <div class="talla-table-wrap"><table class="talla-table" style="margin-top:1rem">
-          <tr><th>Talla</th><th>Ancho pecho</th><th>Largo total</th><th>Manga</th></tr>
-          <tr><td>XS</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr><td>M</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr><td>L</td><td>—</td><td>—</td><td>—</td></tr>
-        </table></div>
+      </div>
+      <div class="talla-section" style="margin-top:2rem">
+        <h3>LIMITED DROPS</h3>
+        <p class="talla-note" style="font-size:15px;line-height:1.7">Musculosa oversize, sin mangas. Disponibles en M y XL.</p>
       </div>
       <p class="talla-note" style="margin-top:1.5rem">Todas nuestras prendas son de corte oversize — si buscas un calce más ajustado, te recomendamos elegir una talla menos. ¿Dudas con tu talla? Escríbenos por WhatsApp y te ayudamos a elegir.</p>
     `
@@ -1524,8 +1555,8 @@ const infoPages = {
       <div class="envio-card">
         <div class="envio-icon">⚡</div>
         <div>
-          <h4>Envío Express — RM y cercanas</h4>
-          <p>Entrega en 1 a 2 días hábiles para la Región Metropolitana y regiones cercanas.</p>
+          <h4>Envío Express — Todo Chile</h4>
+          <p>Entrega en 1 a 2 días hábiles a todo Chile.</p>
           <div class="envio-price">$7.990 CLP</div>
         </div>
       </div>
@@ -1550,15 +1581,15 @@ const infoPages = {
       </div>
       <div class="faq-item">
         <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">¿Cómo confirmo mi pedido? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div>Una vez hecha la transferencia, envíanos el comprobante por WhatsApp al +56 9 9419 5064. Confirmamos el pedido y el despacho en máximo 24 horas hábiles.</div></div>
+        <div class="faq-answer"><div>Una vez hecha la transferencia, envíanos el comprobante por WhatsApp al +56 9 9419 5064. Te respondemos casi al instante y despachamos en 24 a 48 horas hábiles.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">¿Hacen cambios o devoluciones? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div>No realizamos cambios ni devoluciones. Te recomendamos revisar bien la guía de tallas antes de comprar. Si tienes dudas, escríbenos por WhatsApp y te asesoramos.</div></div>
+        <div class="faq-answer"><div>No realizamos cambios ni devoluciones. Si tienes dudas con tu talla, escríbenos por WhatsApp antes de comprar y te asesoramos.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">¿Cuánto demora en llegar mi pedido? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div>STARKEN: 3 a 5 días hábiles a todo Chile. Express RM: 1 a 2 días hábiles. Los tiempos corren desde que confirmamos el pago.</div></div>
+        <div class="faq-answer"><div>STARKEN: 3 a 5 días hábiles a todo Chile. Express a todo Chile: 1 a 2 días hábiles. Los tiempos corren desde que confirmamos el pago.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">¿Cómo puedo pagar? <span class="faq-icon">+</span></button>
