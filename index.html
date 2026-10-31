@@ -892,6 +892,22 @@ footer a{display:inline-block;padding:12px 6px}
 .terms-end{margin-top:2.2rem;padding:14px 16px;background:#f9f9f9;border-left:3px solid #0a0a0a;font-size:13px;line-height:1.7;color:#333}
 
 .soon-price{font-size:16px;font-weight:700;letter-spacing:.01em;margin:.1rem 0 .3rem;color:#fff}
+
+/* ===== TRANSICIÓN: la sección anterior "resurge" desde el negro ===== */
+.emerge-wrap{background:#0a0a0a;padding-top:clamp(28px,6vw,72px);overflow:hidden}
+.emerge{transform-origin:50% 0;transform:translateY(90px) scale(.84);border-radius:64px 64px 0 0;opacity:0;overflow:hidden;box-shadow:0 -30px 80px rgba(255,255,255,.0);transition:transform 1.25s cubic-bezier(.16,1,.3,1),border-radius 1.25s cubic-bezier(.16,1,.3,1),opacity .6s ease,box-shadow 1.25s ease;will-change:transform,opacity}
+.emerge.in{transform:none;border-radius:0;opacity:1;box-shadow:0 -30px 80px rgba(255,255,255,.07)}
+.emerge .catalog-entry-head{opacity:0;transform:translateY(28px);transition:opacity .8s .55s cubic-bezier(.16,1,.3,1),transform .8s .55s cubic-bezier(.16,1,.3,1)}
+.emerge .catalog-preview-card{opacity:0;transform:translateY(54px) scale(.94);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1)}
+.emerge.in .catalog-entry-head{opacity:1;transform:none}
+.emerge.in .catalog-preview-card{opacity:1;transform:none}
+.emerge.in .catalog-preview-card:nth-child(1){transition-delay:.7s}
+.emerge.in .catalog-preview-card:nth-child(2){transition-delay:.85s}
+.emerge.in .catalog-preview-card:nth-child(3){transition-delay:1s}
+@media(prefers-reduced-motion:reduce){
+  .emerge,.emerge .catalog-entry-head,.emerge .catalog-preview-card{transition:none!important;opacity:1!important;transform:none!important;border-radius:0!important}
+  .emerge-wrap{padding-top:0}
+}
 </style>
 </head>
 <body>
@@ -1208,7 +1224,8 @@ function soonFlip(b){
 </script>
 
 <!-- 3. CATÁLOGO PREVIEW -->
-<div class="catalog-entry reveal">
+<div class="emerge-wrap" id="emergeWrap">
+<div class="catalog-entry emerge">
   <div class="catalog-entry-inner">
     <div class="catalog-entry-head">
       <h2>POLERONES</h2>
@@ -1217,6 +1234,18 @@ function soonFlip(b){
     <div class="catalog-preview-grid" id="previewPolerones"></div>
   </div>
 </div>
+</div>
+<script>
+(function(){
+  var w=document.getElementById('emergeWrap');
+  if(!w)return;
+  var e=w.querySelector('.emerge');
+  function go(){e.classList.add('in');}
+  if(!('IntersectionObserver' in window)||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){go();return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){go();io.disconnect();}});},{threshold:.14});
+  io.observe(w);
+})();
+</script>
 
 <div class="catalog-entry reveal" style="background:#fafafa">
   <div class="catalog-entry-inner">
