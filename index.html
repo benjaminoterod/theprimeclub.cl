@@ -849,7 +849,7 @@ footer a{display:inline-block;padding:12px 6px}
 .soon-meta h4{font-size:14px;font-weight:700;letter-spacing:.02em;margin-bottom:.25rem}
 .soon-units{font-size:11px;color:rgba(255,255,255,.7);margin-bottom:.7rem;letter-spacing:.03em}
 .soon-sizes{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
-.soon-sizes li{display:flex;flex-direction:column;align-items:center;min-width:44px;padding:6px 8px;border:1px solid rgba(255,255,255,.4);line-height:1.1}
+.soon-sizes li{display:block;padding:0;border:0}
 .soon-sizes b{font-size:13px;font-weight:700}
 .soon-sizes span{font-size:10px;font-weight:600;color:var(--accent);margin-top:3px}
 .soon-note{max-width:1400px;margin:0 auto;padding:1.4rem clamp(1rem,3vw,2.5rem) 3rem;font-size:12px;color:rgba(255,255,255,.7);line-height:1.6}
@@ -879,7 +879,6 @@ footer a{display:inline-block;padding:12px 6px}
   .soon-facts{grid-template-columns:repeat(3,1fr);gap:.8rem}
   .soon-facts li{font-size:10px}
   .soon-facts b{font-size:18px}
-  .soon-sizes li{min-width:38px;padding:5px 5px}
   .soon-cards{gap:.7rem}
   .soon-hint{font-size:9px;padding:5px 7px}
 }
@@ -949,6 +948,9 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
 .pre-notice .field-err{color:#ff8591}
 .success-pre{font-size:13px;line-height:1.7;color:#333;max-width:440px;background:#f5f5f5;border-left:3px solid #0a0a0a;padding:12px 14px;text-align:left}
 @media(max-width:600px){.soon-size{min-width:42px;min-height:46px;padding:5px 6px}}
+
+.cart-pre{font-size:11px;line-height:1.55;background:#f5f5f5;border-left:3px solid #0a0a0a;padding:9px 11px;margin-bottom:.9rem;color:#333}
+.cart-pre a{color:#0a0a0a;text-decoration:underline;font-weight:700}
 </style>
 </head>
 <body>
@@ -1155,8 +1157,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="601">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">4 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b><span>1</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(601,this)">Agregar al carrito</button>
           </div>
@@ -1170,8 +1172,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="602">
             <h4>Polera oversize hombre</h4>
             <p class="soon-price">$21.990 CLP</p>
-            <p class="soon-units">7 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b><span>2</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(602,this)">Agregar al carrito</button>
           </div>
@@ -1194,8 +1196,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="603">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">4 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b><span>1</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(603,this)">Agregar al carrito</button>
           </div>
@@ -1209,8 +1211,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="604">
             <h4>Polera oversize hombre</h4>
             <p class="soon-price">$21.990 CLP</p>
-            <p class="soon-units">7 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b><span>2</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(604,this)">Agregar al carrito</button>
           </div>
@@ -1233,8 +1235,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="605">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">4 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b><span>1</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(605,this)">Agregar al carrito</button>
           </div>
@@ -1248,8 +1250,8 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
           <div class="soon-meta" data-id="606">
             <h4>Polera oversize hombre</h4>
             <p class="soon-price">$21.990 CLP</p>
-            <p class="soon-units">7 unidades · Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b><span>1</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b><span>2</span></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b><span>2</span></button></li></ul>
+            <p class="soon-units">Elige tu talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 2 disponibles" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 2 disponibles" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 2 disponibles" onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
             <button type="button" class="soon-add" onclick="soonAdd(606,this)">Agregar al carrito</button>
           </div>
@@ -1257,7 +1259,6 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
       </div>
     </article>
   </div>
-  <p class="soon-note">Preventa: los productos no están disponibles para entrega inmediata. <button type="button" onclick="openInfo('preventa')">Ver términos y condiciones</button></p>
 </section>
 <script>
 (function(){
@@ -1297,7 +1298,6 @@ function soonRefresh(){
       var s=b.getAttribute('data-s');
       var inCart=(cart.find(function(x){return x.id===id&&x.size===s;})||{}).qty||0;
       var left=(p.stock[s]||0)-inCart;
-      b.querySelector('span').textContent=left;
       b.disabled=left<=0;
       if(left<=0&&b.getAttribute('aria-pressed')==='true')b.setAttribute('aria-pressed','false');
       b.setAttribute('aria-label','Talla '+s+', '+(left>0?left+(left===1?' disponible':' disponibles'):'agotada'));
@@ -1444,7 +1444,6 @@ function soonFlip(b){
       <div class="pp-brand-lbl" id="ppBrand"></div>
       <h1 class="pp-name" id="ppName"></h1>
       <div class="pp-price" id="ppPrice"></div>
-      <div class="pp-prenote" id="ppPreNote" style="display:none"><strong>PREVENTA</strong> · <span id="ppPreTxt"></span> <span id="ppStockLine"></span> <a href="#" onclick="event.preventDefault();openInfo('preventa')">Ver términos</a></div>
       <p class="pp-desc" id="ppDesc"></p>
       <div class="pp-divider"></div>
       <div class="pp-label">Talla <span id="ppSizeSel" style="color:#595959;font-weight:400;text-transform:none;letter-spacing:0;font-size:12px"></span></div>
@@ -1490,6 +1489,7 @@ function soonFlip(b){
       <button class="disc-apply" onclick="applyDisc('cart')">Aplicar</button>
     </div>
     <div class="disc-ok" id="cartDiscOk" style="display:none">✓ Descuento aplicado</div>
+    <div class="cart-pre" id="cartPre" style="display:none"><strong>Incluye PREVENTA.</strong> <span id="cartPreTxt"></span> <a href="#" onclick="event.preventDefault();closeCart();openInfo('preventa')">Ver términos</a></div>
     <div class="cart-totals">
       <div class="cart-total-row"><span>Subtotal</span><span id="cartSub">$0</span></div>
       <div class="cart-total-row" id="cartDiscRow" style="display:none;color:green"><span>Descuento</span><span id="cartDiscAmt" style="color:green"></span></div>
@@ -1817,7 +1817,6 @@ function openProd(id){
   document.getElementById('ppName').textContent=p.name;
   document.getElementById('ppPrice').innerHTML=`${fmt(p.price)} CLP${p.oldPrice?` <del>${fmt(p.oldPrice)} CLP</del> <span class="pp-off">-${Math.round((1-p.price/p.oldPrice)*100)}%</span>`:''}`;
   document.getElementById('ppDesc').textContent=p.desc;
-  (function(){var n=document.getElementById('ppPreNote');if(!n)return;n.style.display=p.preventa?'block':'none';if(p.preventa){document.getElementById('ppPreTxt').textContent=preDateText();document.getElementById('ppStockLine').textContent=p.stock?'Quedan: '+Object.keys(p.stock).map(function(k){return k+' '+p.stock[k];}).join(' · ')+'.':'';}})();
   document.getElementById('qtyNum').textContent=1;
   document.getElementById('ppSizeSel').textContent='';
   const hi=p.imgs&&p.imgs.length>0;
@@ -1890,6 +1889,7 @@ function qAdd(id){
 }
 function updCart(){
   if(typeof soonRefresh==='function')setTimeout(soonRefresh,0);
+  (function(){var has=cart.some(function(i){return i.preventa;});var c=document.getElementById('cartPre');if(c){c.style.display=has?'block':'none';var t=document.getElementById('cartPreTxt');if(t)t.textContent=preDateText();}})();
   const cnt=cart.reduce((s,i)=>s+i.qty,0);
   document.getElementById('cartBadge').textContent=cnt;
   document.getElementById('cartCountLbl').textContent=cnt?`(${cnt})`:'';
@@ -1905,7 +1905,7 @@ function updCart(){
     document.getElementById('cartBody').innerHTML=cart.map(i=>`
       <div class="cart-item">
         <div class="ci-img">${i.imgs&&i.imgs[0]?`<img src="${i.imgs[0]}" alt="${i.name}">`:`<span style="font-size:24px">${i.emoji}</span>`}</div>
-        <div><div class="ci-name">${i.name}</div><div class="ci-meta">${i.brand} · Talla ${i.size}</div>
+        <div><div class="ci-name">${i.name}</div><div class="ci-meta">${i.brand} · Talla ${i.size}${i.preventa?' · Preventa':''}</div>${i.max?`<div class="ci-meta" style="color:#a02a1e;font-weight:700">Stock limitado: máx. ${i.max} de esta talla</div>`:''}
           <div class="ci-qty"><button class="ciq-btn" data-q="${i.id}|${i.size}|-1" aria-label="Disminuir cantidad de ${i.name}" onclick="updItemQty(${i.id},'${i.size}',-1)">−</button><div class="ciq-n" aria-live="polite">${i.qty}</div><button class="ciq-btn" data-q="${i.id}|${i.size}|1" aria-label="Aumentar cantidad de ${i.name}" onclick="updItemQty(${i.id},'${i.size}',1)">+</button></div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
