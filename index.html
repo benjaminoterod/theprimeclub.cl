@@ -54,11 +54,11 @@
     {"@type":"Product","position":11,"name":"Drop Negro","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"LIMITED DROPS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":12,"name":"Drop Blanco","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"LIMITED DROPS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":13,"name":"Drop Café","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"LIMITED DROPS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"20990","availability":"https://schema.org/InStock","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":14,"name":"Polerón Billetes","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":14,"name":"Polerón Billetes","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":15,"name":"Polera Billetes","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"21990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":16,"name":"Polerón Cartas Azules","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":16,"name":"Polerón Cartas Azules","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":17,"name":"Polera Cartas Azules","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"21990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}},
-    {"@type":"Product","position":18,"name":"Polerón Labios Rojos","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}},
+    {"@type":"Product","position":18,"name":"Polerón Labios Rojos","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"31990","availability":"https://schema.org/OutOfStock","url":"https://theprimeclub.cl/"}},
     {"@type":"Product","position":19,"name":"Polera Labios Rojos","brand":{"@type":"Brand","name":"PRIMECLUB"},"category":"PREVENTA NO LIMITS","offers":{"@type":"Offer","priceCurrency":"CLP","price":"21990","availability":"https://schema.org/PreOrder","url":"https://theprimeclub.cl/"}}
   ]
 }
@@ -951,6 +951,10 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
 
 .cart-pre{font-size:11px;line-height:1.55;background:#f5f5f5;border-left:3px solid #0a0a0a;padding:9px 11px;margin-bottom:.9rem;color:#333}
 .cart-pre a{color:#0a0a0a;text-decoration:underline;font-weight:700}
+
+.soon-badge.sold{background:rgba(180,0,0,.92);color:#fff}
+.soon-add:disabled{background:transparent;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.3);cursor:not-allowed;transform:none}
+.soon-add:disabled:hover{background:transparent;transform:none}
 </style>
 </head>
 <body>
@@ -1134,7 +1138,7 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
         <button class="soon-link" type="button" onclick="openInfo('preventa')">Términos de preventa</button>
       </div>
       <ul class="soon-facts">
-        <li><b>33</b>unidades en toda la colección</li>
+        <li><b>21</b>unidades disponibles (poleras)</li>
         <li><b>S – XL</b>tallas disponibles</li>
         <li><b>14 DÍAS</b>de llegada desde el cierre</li>
       </ul>
@@ -1151,16 +1155,16 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
         <div class="soon-item">
           <button class="soon-card" type="button" aria-pressed="false" aria-label="Polerón oversize BILLETES: cambiar entre frente y espalda" onclick="soonFlip(this)">
             <span class="soon-img"><img class="f" src="img/billetes-poleron-f.jpg" alt="Polerón oversize BILLETES, frente" width="760" height="1351" loading="lazy" decoding="async"/><img class="b" src="img/billetes-poleron-b.jpg" alt="Polerón oversize BILLETES, espalda" width="760" height="1351" loading="lazy" decoding="async"/></span>
-            <span class="soon-badge">PREVENTA</span>
+            <span class="soon-badge sold">AGOTADO</span>
             <span class="soon-hint" aria-hidden="true"><span class="h-f">↻ Espalda</span><span class="h-b">↻ Frente</span></span>
           </button>
           <div class="soon-meta" data-id="601">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
+            <p class="soon-units">Agotado · sin stock en ninguna talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Tallas agotadas"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, agotada" disabled onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, agotada" disabled onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, agotada" disabled onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, agotada" disabled onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
-            <button type="button" class="soon-add" onclick="soonAdd(601,this)">Agregar al carrito</button>
+            <button type="button" class="soon-add" disabled>Agotado</button>
           </div>
         </div>
         <div class="soon-item">
@@ -1190,16 +1194,16 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
         <div class="soon-item">
           <button class="soon-card" type="button" aria-pressed="false" aria-label="Polerón oversize CARTAS AZULES: cambiar entre frente y espalda" onclick="soonFlip(this)">
             <span class="soon-img"><img class="f" src="img/cartas-poleron-f.jpg" alt="Polerón oversize CARTAS AZULES, frente" width="760" height="1351" loading="lazy" decoding="async"/><img class="b" src="img/cartas-poleron-b.jpg" alt="Polerón oversize CARTAS AZULES, espalda" width="760" height="1351" loading="lazy" decoding="async"/></span>
-            <span class="soon-badge">PREVENTA</span>
+            <span class="soon-badge sold">AGOTADO</span>
             <span class="soon-hint" aria-hidden="true"><span class="h-f">↻ Espalda</span><span class="h-b">↻ Frente</span></span>
           </button>
           <div class="soon-meta" data-id="603">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
+            <p class="soon-units">Agotado · sin stock en ninguna talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Tallas agotadas"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, agotada" disabled onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, agotada" disabled onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, agotada" disabled onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, agotada" disabled onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
-            <button type="button" class="soon-add" onclick="soonAdd(603,this)">Agregar al carrito</button>
+            <button type="button" class="soon-add" disabled>Agotado</button>
           </div>
         </div>
         <div class="soon-item">
@@ -1229,16 +1233,16 @@ nav .nav-logo:focus-visible,nav .nav-icon:focus-visible,nav .hamburger:focus-vis
         <div class="soon-item">
           <button class="soon-card" type="button" aria-pressed="false" aria-label="Polerón oversize LABIOS ROJOS: cambiar entre frente y espalda" onclick="soonFlip(this)">
             <span class="soon-img"><img class="f" src="img/labios-poleron-f.jpg" alt="Polerón oversize LABIOS ROJOS, frente" width="680" height="1209" loading="lazy" decoding="async"/><img class="b" src="img/labios-poleron-b.jpg" alt="Polerón oversize LABIOS ROJOS, espalda" width="680" height="1209" loading="lazy" decoding="async"/></span>
-            <span class="soon-badge">PREVENTA</span>
+            <span class="soon-badge sold">AGOTADO</span>
             <span class="soon-hint" aria-hidden="true"><span class="h-f">↻ Espalda</span><span class="h-b">↻ Frente</span></span>
           </button>
           <div class="soon-meta" data-id="605">
             <h4>Polerón oversize unisex</h4>
             <p class="soon-price">$31.990 CLP</p>
-            <p class="soon-units">Elige tu talla</p>
-            <ul class="soon-sizes" role="group" aria-label="Elige tu talla"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, 1 disponible" onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, 1 disponible" onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, 1 disponible" onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, 1 disponible" onclick="soonPick(this)"><b>XL</b></button></li></ul>
+            <p class="soon-units">Agotado · sin stock en ninguna talla</p>
+            <ul class="soon-sizes" role="group" aria-label="Tallas agotadas"><li><button type="button" class="soon-size" aria-pressed="false" data-s="S" aria-label="Talla S, agotada" disabled onclick="soonPick(this)"><b>S</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="M" aria-label="Talla M, agotada" disabled onclick="soonPick(this)"><b>M</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="L" aria-label="Talla L, agotada" disabled onclick="soonPick(this)"><b>L</b></button></li><li><button type="button" class="soon-size" aria-pressed="false" data-s="XL" aria-label="Talla XL, agotada" disabled onclick="soonPick(this)"><b>XL</b></button></li></ul>
             <p class="soon-err" role="alert">Elige una talla para agregar.</p>
-            <button type="button" class="soon-add" onclick="soonAdd(605,this)">Agregar al carrito</button>
+            <button type="button" class="soon-add" disabled>Agotado</button>
           </div>
         </div>
         <div class="soon-item">
@@ -1732,7 +1736,7 @@ const essentialsProds = [
   {id:601,brand:'PRIMECLUB',name:'Polerón Billetes',cat:'preventa',preventa:true,price:31990,oldPrice:null,badge:'preventa',emoji:'🧥',
    imgs:['img/billetes-poleron-f.jpg','img/billetes-poleron-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polerón oversize unisex PRIMECLUB, diseño Billetes. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí lo despachamos. Stock limitado por talla.',
-   sizes:['S','M','L','XL'],unavail:[],stock:{S:1,M:1,L:1,XL:1}},
+   sizes:['S','M','L','XL'],unavail:['S','M','L','XL'],stock:{S:0,M:0,L:0,XL:0}},
   {id:602,brand:'PRIMECLUB',name:'Polera Billetes',cat:'preventa',preventa:true,price:21990,oldPrice:null,badge:'preventa',emoji:'👕',
    imgs:['img/billetes-polera-f.jpg','img/billetes-polera-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polera oversize hombre PRIMECLUB, diseño Billetes. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí la despachamos. Stock limitado por talla.',
@@ -1740,7 +1744,7 @@ const essentialsProds = [
   {id:603,brand:'PRIMECLUB',name:'Polerón Cartas Azules',cat:'preventa',preventa:true,price:31990,oldPrice:null,badge:'preventa',emoji:'🧥',
    imgs:['img/cartas-poleron-f.jpg','img/cartas-poleron-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polerón oversize unisex PRIMECLUB, diseño Cartas Azules. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí lo despachamos. Stock limitado por talla.',
-   sizes:['S','M','L','XL'],unavail:[],stock:{S:1,M:1,L:1,XL:1}},
+   sizes:['S','M','L','XL'],unavail:['S','M','L','XL'],stock:{S:0,M:0,L:0,XL:0}},
   {id:604,brand:'PRIMECLUB',name:'Polera Cartas Azules',cat:'preventa',preventa:true,price:21990,oldPrice:null,badge:'preventa',emoji:'👕',
    imgs:['img/cartas-polera-f.jpg','img/cartas-polera-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polera oversize hombre PRIMECLUB, diseño Cartas Azules. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí la despachamos. Stock limitado por talla.',
@@ -1748,7 +1752,7 @@ const essentialsProds = [
   {id:605,brand:'PRIMECLUB',name:'Polerón Labios Rojos',cat:'preventa',preventa:true,price:31990,oldPrice:null,badge:'preventa',emoji:'🧥',
    imgs:['img/labios-poleron-f.jpg','img/labios-poleron-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polerón oversize unisex PRIMECLUB, diseño Labios Rojos. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí lo despachamos. Stock limitado por talla.',
-   sizes:['S','M','L','XL'],unavail:[],stock:{S:1,M:1,L:1,XL:1}},
+   sizes:['S','M','L','XL'],unavail:['S','M','L','XL'],stock:{S:0,M:0,L:0,XL:0}},
   {id:606,brand:'PRIMECLUB',name:'Polera Labios Rojos',cat:'preventa',preventa:true,price:21990,oldPrice:null,badge:'preventa',emoji:'👕',
    imgs:['img/labios-polera-f.jpg','img/labios-polera-b.jpg'],
    desc:'PREVENTA · NO LIMITS — MEGADROP. Polera oversize hombre PRIMECLUB, diseño Labios Rojos. Llega a PRIME CLUB ~14 días corridos después del cierre de la preventa; recién ahí la despachamos. Stock limitado por talla.',
