@@ -1149,13 +1149,25 @@ body{background:#0a0a0a;color:#f2f2f2}
 
 @media(min-width:1500px){.catalog-entry-inner .catalog-preview-filler{display:none}}
 
-/* ===== LEMA: frase grande con animación entre Próximamente y el catálogo ===== */
-.statement{position:relative;background:#0a0a0a;padding:clamp(56px,8vw,110px) 2.5rem clamp(40px,6vw,80px);overflow:hidden;text-align:center}
-.st-glow{position:absolute;left:50%;top:55%;width:min(900px,90vw);height:420px;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(192,57,43,.20) 0%,rgba(192,57,43,0) 68%);opacity:0;transition:opacity 1.6s ease .4s;pointer-events:none}
+
+/* ===== LEMA con mosaico de fotos en movimiento ===== */
+.statement{position:relative;background:#0a0a0a;min-height:clamp(500px,46vw,660px);display:flex;align-items:center;justify-content:center;padding:clamp(60px,8vw,110px) 2.5rem;overflow:hidden;text-align:center;isolation:isolate}
+.st-mosaic{position:absolute;left:-12%;right:-12%;top:-8%;bottom:-8%;display:flex;flex-direction:column;gap:6px;transform:rotate(-2.5deg);z-index:0}
+.st-row{flex:1;min-height:0;overflow:hidden}
+.st-track{display:flex;gap:6px;height:100%;width:max-content;animation:stDrift 80s linear infinite;will-change:transform}
+.st-row:nth-child(2) .st-track{animation-duration:100s}
+.st-row:nth-child(3) .st-track{animation-duration:120s}
+.st-row.rev .st-track{animation-direction:reverse}
+@keyframes stDrift{to{transform:translateX(-33.3333%)}}
+.st-t{display:block;flex:0 0 200px;height:100%;background-repeat:no-repeat;background-color:#141414;filter:grayscale(1) contrast(1.12) brightness(.5);opacity:0}
+.statement.in .st-t{animation:stFlash .7s ease-out var(--d,0s) both}
+@keyframes stFlash{0%{opacity:0;filter:grayscale(1) contrast(1.3) brightness(2.4)}35%{opacity:1;filter:grayscale(1) contrast(1.2) brightness(1.6)}100%{opacity:1;filter:grayscale(1) contrast(1.12) brightness(.5)}}
+.st-vig{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 58% 72% at 50% 50%,rgba(10,10,10,.9) 0%,rgba(10,10,10,.62) 52%,rgba(10,10,10,.12) 100%),linear-gradient(180deg,#0a0a0a 0,rgba(10,10,10,0) 16%,rgba(10,10,10,0) 84%,#0a0a0a 100%);pointer-events:none}
+.st-glow{position:absolute;left:50%;top:55%;width:min(900px,90vw);height:420px;transform:translate(-50%,-50%);z-index:1;background:radial-gradient(ellipse at center,rgba(192,57,43,.22) 0%,rgba(192,57,43,0) 68%);opacity:0;transition:opacity 1.6s ease .4s;pointer-events:none}
 .statement.in .st-glow{opacity:1;animation:stBreath 5s 2s ease-in-out infinite}
 @keyframes stBreath{0%,100%{opacity:.75}50%{opacity:1}}
-.st-inner{position:relative;max-width:1400px;margin:0 auto}
-.st-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5em;color:rgba(255,255,255,.55);opacity:0;transform:translateY(10px);transition:opacity .9s ease,transform .9s ease,letter-spacing 1.4s cubic-bezier(.16,1,.3,1)}
+.st-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto}
+.st-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5em;color:rgba(255,255,255,.7);opacity:0;transform:translateY(10px);transition:opacity .9s ease,transform .9s ease,letter-spacing 1.4s cubic-bezier(.16,1,.3,1)}
 .statement.in .st-kicker{opacity:1;transform:none;letter-spacing:.26em}
 .st-title{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,8.4vw,132px);line-height:.92;letter-spacing:.015em;margin:1.4rem 0 0;color:#fff}
 .st-line{display:block;overflow:hidden;padding:.04em 0 .08em}
@@ -1169,13 +1181,17 @@ body{background:#0a0a0a;color:#f2f2f2}
 .st-rule{display:block;height:4px;width:0;margin:2.2rem auto 0;background:#c0392b;box-shadow:0 0 22px rgba(192,57,43,.7);transition:width 1.2s cubic-bezier(.16,1,.3,1) 1.6s}
 .statement.in .st-rule{width:96px}
 @media(max-width:600px){
-  .statement{padding:64px 1.2rem 52px}
+  .statement{padding:64px 1.2rem;min-height:520px}
   .st-kicker{letter-spacing:.3em;font-size:10px}
   .statement.in .st-kicker{letter-spacing:.2em}
   .st-out>span{-webkit-text-stroke:1.4px rgba(255,255,255,.9)}
+  .st-mosaic{left:-30%;right:-30%}
+  .st-row:nth-child(3){display:none}
 }
 @media (prefers-reduced-motion: reduce){
-  .st-kicker,.st-line>span,.st-glow,.st-rule{transition:none!important;animation:none!important;opacity:1!important;transform:none!important}
+  .st-track,.st-t,.st-glow{animation:none!important}
+  .st-t{opacity:1!important}
+  .st-kicker,.st-line>span,.st-glow,.st-rule{transition:none!important;opacity:1!important;transform:none!important}
   .st-rule{width:96px}
   .st-out>span{background-position:0 0!important}
 }
@@ -1541,6 +1557,8 @@ function soonFlip(b){
 
 <!-- LEMA -->
 <section class="statement" id="statement" aria-labelledby="stTitle">
+  <div class="st-mosaic" id="stMosaic" aria-hidden="true"></div>
+  <div class="st-vig" aria-hidden="true"></div>
   <div class="st-glow" aria-hidden="true"></div>
   <div class="st-inner">
     <span class="st-kicker">PRIME CLUB® — LA SERENA, CHILE</span>
@@ -1553,13 +1571,48 @@ function soonFlip(b){
 </section>
 <script>
 (function(){
-  var s=document.getElementById('statement');
-  if(!s)return;
+  var s=document.getElementById('statement'),m=document.getElementById('stMosaic');
+  if(!s||!m)return;
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(still||!('IntersectionObserver' in window)){s.classList.add('in');return;}
+  var U='img/lema/';
+  // [foto, tamaño, posición, ancho(px), color?]
+  var T={
+    A:['campo','cover','50% 50%',300],B:['campo','280%','8% 62%',200],C:['campo','260%','95% 64%',200],D:['campo','200%','50% 58%',240],
+    E:['polvo','cover','50% 62%',170],F:['polvo','250%','48% 72%',190],
+    G:['saludo','cover','50% 45%',170],H:['saludo','260%','58% 28%',190],I:['saludo','230%','40% 82%',220],
+    J:['grupo','330%','6% 72%',210],K:['grupo','190%','62% 62%',260],
+    L:['duna','cover','50% 55%',170],M:['duna','260%','55% 52%',190],
+    N:['espalda','230%','50% 40%',200],O:['espalda','cover','50% 50%',170]
+  };
+  var ROWS=[['A','F','K','E','N','I','C'],['G','J','D','M','O','B','H'],['L','B','F','A','N','J','H']];
+  var built=false;
+  function build(){
+    if(built)return;built=true;
+    ROWS.forEach(function(r,ri){
+      var row=document.createElement('div');row.className='st-row'+(ri===1?' rev':'');
+      var tr=document.createElement('div');tr.className='st-track';
+      for(var k=0;k<3;k++){
+        r.forEach(function(id){
+          var d=T[id],t=document.createElement('i');t.className='st-t'+(d[4]?' hot':'');
+          t.style.backgroundImage='url('+U+d[0]+'.webp)';
+          t.style.backgroundSize=d[1];t.style.backgroundPosition=d[2];
+          t.style.flexBasis=d[3]+'px';
+          t.style.setProperty('--d',(Math.random()*1.5).toFixed(2)+'s');
+          t.style.setProperty('--h',(Math.random()*5).toFixed(2)+'s');
+          tr.appendChild(t);
+        });
+      }
+      row.appendChild(tr);m.appendChild(row);
+    });
+  }
+  if(still||!('IntersectionObserver' in window)){build();s.classList.add('in');return;}
+  var pre=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){build();pre.disconnect();}});
+  },{rootMargin:'700px 0px'});
+  pre.observe(s);
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){s.classList.add('in');io.disconnect();}});
-  },{threshold:.45});
+    es.forEach(function(e){if(e.isIntersecting){build();s.classList.add('in');io.disconnect();}});
+  },{threshold:.4});
   io.observe(s);
 })();
 </script>
