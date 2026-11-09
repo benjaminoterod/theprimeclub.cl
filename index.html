@@ -1136,6 +1136,18 @@ body{background:#0a0a0a;color:#f2f2f2}
   .catalog-entry-head h2{font-size:clamp(48px,15vw,64px)}
   .catalog-entry-head a{margin-top:1.1rem}
 }
+
+/* ===== FRASE A LA DERECHA (pantallas anchas); queda lista para reemplazar por fotos de modelos ===== */
+.catalog-entry-aside{display:none}
+@media(min-width:1500px){
+  .catalog-entry-inner{max-width:1720px;grid-template-columns:minmax(260px,340px) auto minmax(240px,1fr)}
+  .catalog-entry-aside{display:block;align-self:center;padding-left:2.2rem;margin-left:1rem;border-left:3px solid #c0392b}
+  .catalog-entry-aside p{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,3.2vw,64px);line-height:.95;letter-spacing:.03em;color:rgba(255,255,255,.92)}
+  .catalog-entry-aside em{display:block;font-style:normal;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)}
+  .catalog-entry-aside span{display:block;margin-top:1.2rem;font-size:10px;font-weight:700;letter-spacing:.24em;color:rgba(255,255,255,.45)}
+}
+
+@media(min-width:1500px){.catalog-entry-inner .catalog-preview-filler{display:none}}
 </style>
 </head>
 <body>
@@ -1505,6 +1517,7 @@ function soonFlip(b){
       <a href="javascript:void(0)" onclick="openCatalog('poleron')">Ver todos →</a>
     </div>
     <div class="catalog-preview-grid" id="previewPolerones"></div>
+    <div class="catalog-entry-aside" aria-hidden="true"><p>Hechos para el frío. <em>Pensados para que te miren.</em></p><span>— PRIMECLUB®</span></div>
   </div>
 </div>
 </div>
@@ -1539,6 +1552,7 @@ function soonFlip(b){
       <a href="javascript:void(0)" onclick="openCatalog('polera')">Ver todas →</a>
     </div>
     <div class="catalog-preview-grid" id="previewPoleras"></div>
+    <div class="catalog-entry-aside" aria-hidden="true"><p>La calle no <em>pide permiso.</em></p><span>— PRIMECLUB®</span></div>
   </div>
 </div>
 
@@ -1550,6 +1564,7 @@ function soonFlip(b){
       <a href="javascript:void(0)" onclick="openCatalog('limited')">Ver todas →</a>
     </div>
     <div class="catalog-preview-grid reveal-stagger" id="previewLimited"></div>
+    <div class="catalog-entry-aside" aria-hidden="true"><p>Cuando se va, <em>no vuelve.</em></p><span>— PRIMECLUB®</span></div>
   </div>
 </div>
 
@@ -1561,6 +1576,7 @@ function soonFlip(b){
       <a href="javascript:void(0)" onclick="openCatalog('womanline')">Ver todas →</a>
     </div>
     <div class="catalog-preview-grid" id="womanline-grid"></div>
+    <div class="catalog-entry-aside" aria-hidden="true"><p>Sin reglas. <em>Con actitud.</em></p><span>— PRIMECLUB®</span></div>
   </div>
 </div>
 
@@ -1572,6 +1588,7 @@ function soonFlip(b){
       <a href="javascript:void(0)" onclick="openCatalog('jockey')">Ver todos →</a>
     </div>
     <div class="catalog-preview-grid" id="jockey-grid"></div>
+    <div class="catalog-entry-aside" aria-hidden="true"><p>El detalle que <em>cierra el fit.</em></p><span>— PRIMECLUB®</span></div>
   </div>
 </div>
 
