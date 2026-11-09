@@ -1081,6 +1081,19 @@ body{background:#0a0a0a;color:#f2f2f2}
 [style*="color:#555"]{color:rgba(255,255,255,.7)!important}
 .chk-right{background:#0a0a0a}
 .success-check{filter:none}
+
+/* ===== TARJETAS CON LUZ: foco gris + brillo que respira ===== */
+.catalog-preview-grid,.products-grid{gap:18px;background:transparent}
+.catalog-preview-card,.product-card{
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 22px rgba(190,190,190,.14);
+  animation:cardFadeUp .55s cubic-bezier(.25,.46,.45,.94) both,glowBreath 3.8s 1s ease-in-out infinite;
+  transition:box-shadow .4s ease,transform .4s ease;
+}
+.catalog-preview-img,.product-img,.product-img-ph{background:radial-gradient(ellipse at 50% 38%,#626262 0%,#303030 52%,#171717 100%)}
+.catalog-preview-card:hover,.product-card:hover{box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 38px rgba(210,210,210,.34)}
+@keyframes glowBreath{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 14px rgba(190,190,190,.10)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.3),0 0 46px rgba(210,210,210,.38)}}
+@media(max-width:600px){.catalog-preview-grid,.products-grid{gap:12px}}
+@media (prefers-reduced-motion: reduce){.catalog-preview-card,.product-card{animation:none!important}}
 </style>
 </head>
 <body>
